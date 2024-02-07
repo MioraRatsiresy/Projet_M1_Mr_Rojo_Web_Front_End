@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "m1p11mean-mitasoa-miora": {
+    "m1p11mean-miora-roussel": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/m1p11mean-mitasoa-miora",
+            "outputPath": "dist/m1p11mean-miora-roussel",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "m1p11mean-mitasoa-miora:build:production"
+              "buildTarget": "m1p11mean-miora-roussel:build:production"
             },
             "development": {
-              "buildTarget": "m1p11mean-mitasoa-miora:build:development"
+              "buildTarget": "m1p11mean-miora-roussel:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "m1p11mean-mitasoa-miora:build"
+            "buildTarget": "m1p11mean-miora-roussel:build"
           }
         },
         "test": {

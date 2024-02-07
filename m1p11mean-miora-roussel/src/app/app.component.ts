@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'm1p11mean-mitasoa-miora';
+  title = 'm1p11mean-miora-roussel';
 }
