@@ -1,0 +1,39 @@
+<div *ngIf="user" class="container">
+  <h2 class="mb-4">Profil de {{ user.nom }} {{ user.prenom }}</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Email :</strong>
+        {{ user.mail }}
+      </p>
+      <p>
+        <strong>Rôle :</strong>
+        <ng-container
+          *ngIf="user.role === 10; then clientRole; else otherRole"
+        ></ng-container>
+        <ng-template #clientRole>
+          <span> Client </span>
+        </ng-template>
+        <ng-template #otherRole>
+          <span *ngIf="user.role === 20"> Employé </span>
+          <span *ngIf="user.role === 30"> Manager </span>
+          <span
+            *ngIf="user.role !== 10 && user.role !== 20 && user.role !== 30"
+          >
+            Rien</span
+          >
+        </ng-template>
+      </p>
+      <!-- Ajoutez d'autres détails de profil ici -->
+    </div>
+  </div>
+
+  <!-- Bouton "Modifier" -->
+  <button (click)="openEditModal()" class="btn btn-primary mt-3">
+    Modifier
+  </button>
+</div>
+
+<div *ngIf="isLoading" class="loader-overlay">
+  <div class="loader"></div>
+</div>

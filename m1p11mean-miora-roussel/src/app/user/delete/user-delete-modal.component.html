@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Confirmation de suppression</h2>
+  <p>
+    Voulez-vous vraiment supprimer l'utilisateur {{ user.nom }}
+    {{ user.prenom }}?
+  </p>
+  <button class="btn btn-danger m-1" (click)="deleteUser()">Oui</button>
+  <button class="btn btn-secondary" (click)="onClose()">Non</button>
+</div>

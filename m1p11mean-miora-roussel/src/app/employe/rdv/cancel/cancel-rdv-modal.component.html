@@ -1,0 +1,43 @@
+<div class="custom-container">
+  <h1 class="custom-title">Action pour le rendez-vous</h1>
+  <div class="custom-content">
+    <h2>Qu'est-ce que vous voulez faire avec ce rendez-vous ?</h2>
+    <div class="content-details">
+      <p>
+        <strong> Rendez-vous : </strong
+        >{{ formatDate(data.rdv.dateheuredebut + "") }} -
+        {{ formatDate(data.rdv.dateheurefin + "") }}
+      </p>
+      <p><strong> Prix : </strong>{{ formatPrice(data.rdv.prix) }}</p>
+      <p><strong> Service : </strong>{{ data.rdv.service.nom }}</p>
+    </div>
+  </div>
+
+  <div class="custom-actions">
+    <button
+      mat-button
+      class="custom-btn custom-secondary"
+      (click)="onNoClick()"
+    >
+      Non
+    </button>
+    <button
+      mat-button
+      color="warn"
+      class="custom-btn custom-danger"
+      (click)="onCancelClick()"
+    >
+      J'annule
+    </button>
+    <!-- Utilisation de *ngIf pour cacher le bouton "Je valide" si la date de fin du rendez-vous est antérieure à maintenant -->
+    <button
+      mat-button
+      color="warn"
+      class="custom-btn custom-success"
+      (click)="onValidClick()"
+      *ngIf="isEndDateAfterNow()"
+    >
+      Je valide
+    </button>
+  </div>
+</div>

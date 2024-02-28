@@ -1,0 +1,8 @@
+<button id="btn-indisponibilite" class="form-control" (click)="notDisponible()">
+  Ajouter une indisponibilité
+  <span class="fa fa-calendar fa-lg mr-3"></span>
+</button>
+<div id="calendar"></div>
+<div *ngIf="isLoading" class="loader-overlay">
+  <div class="loader"></div>
+</div>

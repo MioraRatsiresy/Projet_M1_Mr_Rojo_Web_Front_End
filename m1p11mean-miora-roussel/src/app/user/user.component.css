@@ -1,0 +1,34 @@
+.btn {
+    margin: 1em;
+}
+
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond semi-transparente */
+    z-index: 9999; /* Pour s'assurer que le loader est au-dessus de tout le contenu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loader {
+    width: 80px; /* Largeur du loader */
+    height: 80px; /* Hauteur du loader */
+    border-radius: 50%; /* Forme ronde */
+    border: 8px solid transparent; /* Bordure transparente */
+    border-top-color: #3498db; /* Couleur de la bordure sur le dessus pour l'effet de rotation */
+    animation: spin 1s linear infinite; /* Animation de rotation */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  * {
+    font-family: "Poppins", Arial, sans-serif;
+  }
