@@ -6,7 +6,7 @@ import { UserService } from '../../service/user.service';
 @Component({
   selector: 'app-user-delete-modal',
   templateUrl: './user-delete-modal.component.html',
-  styles: './user-delete-modal.component.css',
+  styleUrls: ['./user-delete-modal.component.css'],
 })
 export class UserDeleteModalComponent {
   constructor(

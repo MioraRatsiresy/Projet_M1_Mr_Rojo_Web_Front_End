@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr'; // Import de ToastrService depuis ng
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add-modal.component.html',
-  styles: './user-add-modal.component.css',
+  styleUrls:['./user-add-modal.component.css'],
 })
 export class UserAddModalComponent {
   newUser: User = {

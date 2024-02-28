@@ -7,7 +7,7 @@ import { ProfileUpdateService } from '../../service/profile-update.service';
 @Component({
   selector: 'app-user-edit-modal',
   templateUrl: './user-edit-modal.component.html',
-  styles: './user-edit-modal.component.css'
+  styleUrls: ['./user-edit-modal.component.css']
 })
 export class UserEditModalComponent {
   editedUser!: User; // Utilisateur à modifier
