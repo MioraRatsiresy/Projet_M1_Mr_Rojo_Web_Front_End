@@ -6,8 +6,8 @@
     <form>
         <input [(ngModel)]="recherche.libelle" name="libelle" placeholder="Libelle"
             (ngModelChange)="rechercherDepenses()">
-        <input [(ngModel)]="recherche.date" name="date" placeholder="Date" (ngModelChange)="rechercherDepenses()">
-        <input [(ngModel)]="recherche.depense" name="depense" placeholder="Dépense"
+        <input [(ngModel)]="recherche.date" name="date" type="date" placeholder="Date" (ngModelChange)="rechercherDepenses()">
+        <input [(ngModel)]="recherche.depense" name="depense"  type="number" placeholder="Dépense"
             (ngModelChange)="rechercherDepenses()">
     </form>
 
