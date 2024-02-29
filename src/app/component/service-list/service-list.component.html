@@ -1,32 +1,77 @@
 <div class="container">
-  <h1>Services</h1>
-  <div class="header">
-    <button class="btn btn-success add-service-button" (click)="creerService()">Ajouter un service</button>
+  <h2 class="mb-4">Liste des Services</h2>
+
+  <div class="header mb-4">
+    <button class="btn btn-success add-service-button" (click)="creerService()">
+      <span class="fa fa-plus-circle mr-2"></span> Ajouter un service
+    </button>
   </div>
-  <form>
-    <input [(ngModel)]="recherche.nom" name="nom" placeholder="Nom" (ngModelChange)="rechercherServices()">
-    <input [(ngModel)]="recherche.prix" name="prix" placeholder="Prix (min..max)" (ngModelChange)="rechercherServices()">
+
+  <form class="mb-4">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <input
+          [(ngModel)]="recherche.nom"
+          name="nom"
+          placeholder="Nom"
+          class="form-control"
+          (ngModelChange)="rechercherServices()"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          [(ngModel)]="recherche.prix"
+          name="prix"
+          placeholder="Prix (min..max)"
+          class="form-control"
+          (ngModelChange)="rechercherServices()"
+        />
+      </div>
+    </div>
   </form>
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
-    <mat-card *ngFor="let service of servicesOnCurrentPage" class="example-card">
+
+  <div
+    style="
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    "
+  >
+    <mat-card
+      *ngFor="let service of servicesOnCurrentPage"
+      class="example-card"
+    >
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title>{{ service.nom }}</mat-card-title>
-          <mat-card-subtitle>Prix: {{ service.prix }} | Delai: {{ service.delai }}</mat-card-subtitle>
+          <mat-card-subtitle
+            >Prix: {{ service.prix }} | Delai:
+            {{ service.delai }}</mat-card-subtitle
+          >
         </mat-card-title-group>
       </mat-card-header>
 
-      <img mat-card-lg-image [src]="serveur+service.image">
+      <img mat-card-lg-image [src]="serveur + service.image" />
       <mat-card-content>
         <p>Commission: {{ service.commission }}</p>
         <button mat-button (click)="openModalService(service)">Modifier</button>
-        <button mat-button color="warn" (click)="supprimerService(service)">Supprimer</button>
+        <button mat-button color="warn" (click)="supprimerService(service)">
+          Supprimer
+        </button>
       </mat-card-content>
-    </mat-card>    
-</div>
-  <button mat-button (click)="previousPage()" [disabled]="pageIndex === 0">Page précédente</button>
-  <button mat-button (click)="nextPage()" [disabled]="pageIndex >= services.length / pageSize - 1">Page suivante</button>  
-</div>
-  
+    </mat-card>
+  </div>
 
-  
+  <div class="mt-4">
+    <button mat-button (click)="previousPage()" [disabled]="pageIndex === 0">
+      Page précédente
+    </button>
+    <button
+      mat-button
+      (click)="nextPage()"
+      [disabled]="pageIndex >= services.length / pageSize - 1"
+    >
+      Page suivante
+    </button>
+  </div>
+</div>

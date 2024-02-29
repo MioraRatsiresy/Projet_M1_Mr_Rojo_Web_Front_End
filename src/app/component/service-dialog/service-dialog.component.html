@@ -1,46 +1,100 @@
-<h1 mat-dialog-title>{{ data.isNew ? 'Ajouter un service' : 'Modifier le service' }}</h1>
-<div mat-dialog-content>
-    <mat-form-field appearance="fill">
-        <mat-label>Nom</mat-label>
-        <input matInput [(ngModel)]="data.service.nom">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Prix</mat-label>
-        <input matInput [(ngModel)]="data.service.prix">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Delai</mat-label>
-        <input matInput [(ngModel)]="data.service.delai">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Commission</mat-label>
-        <input matInput [(ngModel)]="data.service.commission">
-    </mat-form-field>
-    <div style="padding: 15px;">
-        <div>
-            <div class="dropzone" fileDragDrop (filesChangeEmiter)="onFilesChange($event)">
-              <div class="text-wrapper">
-                <div class="centered">
-                  <input type="file" name="image" id="file" (change)="onFileInputChange($event)">
-                  <label for="file"><span class="textLink">Select your file</span> or Drop it here!</label>
-                </div>
-              </div>
-            </div>
-          </div>          
-        <hr>
-        <h3 mat-subheader>Files</h3>
-        <div *ngIf="selectedFile" class="row fileItem">
-            <div class="col-sm-12 fileItemIconDiv" >
-                <i class="fa-6x fileItemIcon"></i>
-            </div>
-            <div class="col-sm-12 fileItemText">
-                <span>{{ selectedFile.name }}</span>
-            </div>
-        </div>
+<div class="container">
+  <h2 class="dialog-title">
+    {{ data.isNew ? "Ajouter un service" : "Modifier le service" }}
+  </h2>
+  <div class="">
+    <div class="form-field">
+      <label>Nom <span class="required">*</span></label>
+      <input
+        [(ngModel)]="data.service.nom"
+        class="form-control"
+        placeholder="Entrez le nom du service"
+      />
     </div>
-</div>
-<div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Annuler</button>
-    <button mat-button *ngIf="data.isNew" (click)="ajouterService()">Ajouter</button>
-    <button mat-button *ngIf="!data.isNew" (click)="modifierService()">Modifier</button>
+    <div class="form-field">
+      <label>Prix <span class="required">*</span></label>
+      <input
+        [(ngModel)]="data.service.prix"
+        class="form-control"
+        placeholder="Entrez le prix du service"
+      />
+    </div>
+    <div class="form-field">
+      <label>Delai <span class="required">*</span></label>
+      <input
+        [(ngModel)]="data.service.delai"
+        class="form-control"
+        placeholder="Entrez le délai du service"
+      />
+    </div>
+    <div class="form-field">
+      <label>Commission <span class="required">*</span></label>
+      <input
+        [(ngModel)]="data.service.commission"
+        class="form-control"
+        placeholder="Entrez la commission du service"
+      />
+    </div>
+    <div class="file-upload-section">
+      <div
+        class="dropzone"
+        fileDragDrop
+        (filesChangeEmiter)="onFilesChange($event)"
+      >
+        <div class="text-wrapper">
+          <div class="centered">
+            <input
+              type="file"
+              name="image"
+              id="file"
+              (change)="onFileInputChange($event)"
+              class="input-file"
+            />
+            <label for="file" class="file-label">
+              <span>Sélectionnez votre fichier</span> ou déposez-le ici !
+            </label>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div *ngIf="selectedFile" class="row fileItem">
+        <div class="col-sm-12 fileItemIconDiv">
+          <span class="icon">
+            <i class="fa-6x fileItemIcon"></i>
+          </span>
+        </div>
+        <div class="col-sm-12 fileItemText">
+          <span>{{ selectedFile.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-actions">
+    <button (click)="onNoClick()" class="btn btn-secondary">
+      <span class="icon">
+        <i class="fa fa-times"></i>
+      </span>
+      Annuler
+    </button>
+    <button
+      *ngIf="data.isNew"
+      (click)="ajouterService()"
+      class="btn btn-primary"
+    >
+      <span class="icon">
+        <i class="fa fa-plus"></i>
+      </span>
+      Ajouter
+    </button>
+    <button
+      *ngIf="!data.isNew"
+      (click)="modifierService()"
+      class="btn btn-primary"
+    >
+      <span class="icon">
+        <i class="fa fa-edit"></i>
+      </span>
+      Modifier
+    </button>
+  </div>
 </div>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PushnotificationService } from './service/pushnotification.service';
+import { getToken, onMessage } from "firebase/messaging";
+import { messaging } from "../firebase/firebaseConfig";
+import { environment } from '../environments/environment';
+import { Router, NavigationEnd } from '@angular/router'; // Importez NavigationEnd
 
 @Component({
   selector: 'app-root',
@@ -7,11 +10,49 @@ import { PushnotificationService } from './service/pushnotification.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
+  isProfileActive = false;
+  isRdvActive = false;
+  isEmployeeActive = false;
+  isAffiche = true;
+
   title = 'Mean_mitambatra_frontend';
-  constructor(private pushNotification: PushnotificationService){};
+  constructor(private router: Router){};
   ngOnInit() {
-    // this.pushNotification.requestPermission();
-    this.pushNotification.listenForMessage();
+    this.requestPermission();
+    this.listenForMessage();
+    // Initialise le composant Toast
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+    
+
+    // Écouter les changements d'URL et mettre à jour les variables en conséquence
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const currentUrl = event.url;
+        this.isProfileActive = currentUrl.includes('/profil');
+        this.isRdvActive = currentUrl.includes('/rdv');
+        this.isEmployeeActive = currentUrl.includes('/user');
+        this.isAffiche = currentUrl !== '/' && !currentUrl.includes('/login') && !currentUrl.includes('/register');
+      }
+    });
   }
 
+  async requestPermission(){
+    const permission = await Notification.requestPermission();
+    if(permission === "granted"){
+      const token = await getToken(messaging,{
+        vapidKey: environment.firebaseConfig.vapidKey
+      });
+      console.log(token);
+    }else if (permission === "denied") {
+      //notifications are blocked
+      alert("You denied for the notification");
+    }
+  }
+
+  async listenForMessage(){
+    onMessage(messaging, (payload) => {
+      console.log('Message received. ', payload);
+      // ...
+    });
+  }
 }

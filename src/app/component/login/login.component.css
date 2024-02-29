@@ -1,0 +1,95 @@
+.card {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: #5ce1e6;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  input {
+    width: calc(100%);
+    padding: 10px;
+    padding-left: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: #5ce1e6;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #48c9d6;
+  }
+  
+  .error-message {
+    color: #f55847;
+  }
+  
+  .register-link {
+    margin-top: 20px;
+  }
+  
+  .register-link a {
+    color: #5ce1e6;
+    text-decoration: none;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .card {
+    width: 450px; /* Ajustez la largeur de la carte selon vos besoins */
+    height: 450px; /* Ajustez la hauteur de la carte selon vos besoins */
+    margin: 0 auto; /* Pour centrer horizontalement */
+    display: flex; /* Utiliser flexbox pour centrer verticalement */
+    flex-direction: column; /* Disposer les éléments verticalement */
+    justify-content: center; /* Pour centrer verticalement */
+    align-items: center; /* Pour centrer horizontalement */
+    text-align: center;
+  }
+  
+  .logo-container {
+    margin-bottom: 20px; /* Espacement sous le logo */
+  }
+  
+  .logo {
+    width: 80px; /* Ajustez la taille du logo selon vos besoins */
+    height: auto; /* Permet de conserver les proportions originales */
+  }
+  
+  .icon {
+    width: 24px; /* Ajustez la taille de l'icône selon vos besoins */
+    height: 24px; /* Ajustez la taille de l'icône selon vos besoins */
+    margin-right: 8px; /* Espacement à droite de l'icône */
+    vertical-align: middle; /* Alignement vertical au milieu */
+  }
+  

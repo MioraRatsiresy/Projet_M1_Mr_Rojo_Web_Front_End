@@ -1,61 +1,95 @@
-<h3> choisir son services</h3>
-<select (change)="onSelectService($event)">
-	<option> Choose a service</option>
-	<option *ngFor="let item of services" [value]="item.id">
-		{{ item.nom }}, dure: {{ item.delai }} mn, prix: {{ item.prix }}
-	  </option>
-	  <option value="16sddf"> test</option>
-</select>
-<p></p>
-
-
-
-
-<input type="text" id="dtp" class="flatpickr-input" (ngModelChange)="onDateChange($event)" placeholder="Select Date">
-
-<button (click)="onSubmitRdv()"> submit</button>
-
-<h3> choisir son olona izay hikarakara azy </h3>
-<select (change)="onSelectEmp($event)">
-	<option> Choose a person</option>
-	<option *ngFor="let emp of employes" [value]="emp.id">
-		{{emp.nom}} {{emp.prenom}}
-	</option>
-</select>
-
-<button (click)="onAdd()"> addRdv</button>
-
-
-<h3> Offre special </h3>
-
-
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th scope="col">#</th>
-			<th scope="col">service</th>
-			<th scope="col">date debut</th>
-			<th scope="col">date fin</th>
-			<th scope="col">Reduction</th>
-		</tr>
-	</thead>
-	<tbody>
-		@for (offre of offresSpec; track offre.reduction; let i = $index) {
-			<tr>
-				<th scope="row">{{ i + 1 }}</th>
-				<td>{{getServiceName(offre.idService)}}</td>
-				<td>					
-					{{ offre.dateDebut }}
-				</td>
-				<td>{{ offre.dateFin  }}</td>
-				<td>{{ offre.reduction  }} %</td>
-			</tr>
-		}
-	</tbody>
-</table>
-
-
-<div>
-	<h1>Historique</h1>
-	<full-calendar [options]="calendarOptions" [deepChangeDetection]="true"></full-calendar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3><span class="fa fa-wrench"></span> Choisir son service</h3>
+      <select (change)="onSelectService($event)" class="form-control">
+        <option>Choisissez un service</option>
+        <option *ngFor="let item of services" [value]="item.id">
+          {{ item.nom }}, durée : {{ item.delai }} mn, prix : {{ item.prix }}
+        </option>
+        <option value="16sddf">Test</option>
+      </select>
+      <div
+        *ngIf="submitted && !rdv.idService"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Veuillez choisir un service.
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h3><span class="fa fa-user"></span> Choisir un employé</h3>
+      <select (change)="onSelectEmp($event)" class="form-control">
+        <option>Choisissez une personne</option>
+        <option *ngFor="let emp of employes" [value]="emp.id">
+          {{ emp.nom }} {{ emp.prenom }}
+        </option>
+      </select>
+      <div
+        *ngIf="submitted && !rdv.idEmploye"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Veuillez choisir un employé.
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <input
+        type="text"
+        id="dtp"
+        class="form-control"
+        (ngModelChange)="onDateChange($event)"
+        placeholder="Sélectionner une date"
+      />
+      <div
+        *ngIf="submitted && !timeRdv"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Veuillez sélectionner une date.
+      </div>
+    </div>
+    <div class="col-md-6">
+      <button (click)="onAdd()" class="btn btn-primary">
+        <span class="fa fa-plus"></span> Ajouter Rdv
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Service</th>
+            <th scope="col">Date début</th>
+            <th scope="col">Date fin</th>
+            <th scope="col">Réduction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let offre of offresSpec; index as i">
+            <tr>
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ getServiceName(offre.idService) }}</td>
+              <td>{{ offre.dateDebut }}</td>
+              <td>{{ offre.dateFin }}</td>
+              <td>{{ offre.reduction }} %</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1><span class="fa fa-calendar"></span> Historique</h1>
+      <full-calendar
+        [options]="calendarOptions"
+        [deepChangeDetection]="true"
+      ></full-calendar>
+    </div>
+  </div>
 </div>

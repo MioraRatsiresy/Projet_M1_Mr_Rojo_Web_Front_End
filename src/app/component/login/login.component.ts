@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit{
           }
           else if(this.role == 10){
               this.push.requestPermission();
+              this.router.navigate(['/clients/list']);
           }
           else{
             this.router.navigate(['/']);
