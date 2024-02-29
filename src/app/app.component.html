@@ -23,7 +23,7 @@
     <div class="wrapper d-flex align-items-stretch">
       <nav id="sidebar" *ngIf="isAffiche">
         <div class="p-4">
-          <h1><a href="index.html" class="logo">Chic hair</a></h1>
+          <h3><a href="index.html" class="titre">Chic hair</a></h3>
           <ul class="list-unstyled components mb-5">
             <li [class.active]="isProfileActive">
               <a [routerLink]="['/profil']"
@@ -62,15 +62,48 @@
 
       <nav id="sidebar" *ngIf="isClient">
         <div class="p-4">
-          <h3><a href="index.html" class="logo">Mon espace client</a></h3>
+          <h3><a href="index.html" class="titre">Espace client</a></h3>
           <ul class="list-unstyled components mb-5">
             <li [class.active]="isProfileActive">
-              <a [routerLink]="['/clients/profil']"
+              <a [routerLink]="['/client/profil']"
                 ><span class="fa fa-user mr-3"></span> Mon profil</a
               >
             </li>
             <li [class.active]="isRdvActive">
-              <a [routerLink]="['/clients/list']"
+              <a [routerLink]="['/client/rdv']"
+                ><span class="fa fa-calendar fa-lg mr-3"></span>Rendez-vous</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="fa fa-sign-out mr-3"></span> Se déconnecter</a
+              >
+            </li>
+          </ul>
+          <div class="footer">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              NOM et PRENOM
+            </p>
+          </div>
+        </div>
+      </nav>
+
+      <nav id="sidebar" *ngIf="isEmploye">
+        <div class="p-4">
+          <h3><a href="index.html" class="titre">Mon espace employe</a></h3>
+          <ul class="list-unstyled components mb-5">
+            <li [class.active]="isProfileActive">
+              <a [routerLink]="['/employe/profil']"
+                ><span class="fa fa-user mr-3"></span> Mon profil</a
+              >
+            </li>
+            <li [class.active]="isRdvActive">
+              <a [routerLink]="['/employe/rdv']"
                 ><span class="fa fa-calendar fa-lg mr-3"></span> Rendez-vous</a
               >
             </li>

@@ -1,0 +1,11 @@
+.titre {
+    text-decoration: none; /* Supprime le soulignement du lien */
+    color: #ffcbc3; /* Couleur du texte */
+    font-size: 24px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+  }
+  
+  .titre:hover {
+    color: #5ce1e6; /* Couleur du texte au survol */
+  }
+  

@@ -13,8 +13,9 @@ export class AppComponent implements OnInit {
   isProfileActive = false;
   isRdvActive = false;
   isEmployeeActive = false;
-  isAffiche = true;
-  isClient = true;
+  isAffiche = false;
+  isClient = false;
+  isEmploye = false;
 
   title = 'Mean_mitambatra_frontend';
   constructor(private router: Router) {}
@@ -32,11 +33,13 @@ export class AppComponent implements OnInit {
         this.isRdvActive = currentUrl.includes('/rdv');
         this.isEmployeeActive = currentUrl.includes('/user');
         this.isClient = currentUrl.includes('/client');
+        this.isEmploye = currentUrl.includes('/employe');
         this.isAffiche =
           currentUrl !== '/' &&
           !currentUrl.includes('/login') &&
           !currentUrl.includes('/register') &&
-          !currentUrl.includes('/clients');
+          !currentUrl.includes('/client') &&
+          !currentUrl.includes('/employe');
       }
     });
   }

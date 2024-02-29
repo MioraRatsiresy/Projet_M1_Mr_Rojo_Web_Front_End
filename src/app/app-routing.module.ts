@@ -64,6 +64,10 @@ const routes: Routes = [
     path: 'clients/preference',
     component: PreferenceComponent,
   },
+  {
+    path: 'employe/profil',
+    component: ProfilComponent,
+  },
   { path: 'clients/profil', component: ProfilComponent },
 ];
 
