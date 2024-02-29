@@ -3,6 +3,7 @@ import { getToken, onMessage } from 'firebase/messaging';
 import { messaging } from '../firebase/firebaseConfig';
 import { environment } from '../environments/environment';
 import { Router, NavigationEnd } from '@angular/router'; // Importez NavigationEnd
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   isEmploye = false;
 
   title = 'Mean_mitambatra_frontend';
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
   ngOnInit() {
     this.requestPermission();
     this.listenForMessage();
@@ -62,5 +63,10 @@ export class AppComponent implements OnInit {
       console.log('Message received. ', payload);
       // ...
     });
+  }
+
+  logoutEmploye() {
+    this.authService.logout();
+    this.router.navigate(['/loginEmploye']);
   }
 }

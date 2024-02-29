@@ -69,6 +69,7 @@ const routes: Routes = [
     component: ProfilComponent,
   },
   { path: 'clients/profil', component: ProfilComponent },
+  { path: 'logout', component: ProfilComponent },
 ];
 
 @NgModule({

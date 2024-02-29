@@ -9,3 +9,24 @@
     color: #5ce1e6; /* Couleur du texte au survol */
   }
   
+  /* Style de base pour le bouton */
+.logout-button {
+  padding: 10px 20px;
+  background-color: #dc3545; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur pointeur */
+  font-size: 16px; /* Taille de la police */
+  margin-top: 2em;
+}
+
+/* Style au survol */
+.logout-button:hover {
+  background-color: #c82333; /* Couleur de fond au survol */
+}
+
+/* Style de l'icône */
+.fa-sign-out {
+  margin-right: 10px; /* Marge à droite de l'icône */
+}

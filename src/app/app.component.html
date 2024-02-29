@@ -42,7 +42,7 @@
               >
             </li>
             <li>
-              <a href="#"
+              <a [routerLink]="['/logout']"
                 ><span class="fa fa-sign-out mr-3"></span> Se déconnecter</a
               >
             </li>
@@ -75,7 +75,7 @@
               >
             </li>
             <li>
-              <a href="#"
+              <a [routerLink]="['/logout']"
                 ><span class="fa fa-sign-out mr-3"></span> Se déconnecter</a
               >
             </li>
@@ -108,9 +108,9 @@
               >
             </li>
             <li>
-              <a href="#"
-                ><span class="fa fa-sign-out mr-3"></span> Se déconnecter</a
-              >
+              <button class="logout-button" (click)="logoutEmploye()">
+                <span class="fa fa-sign-out mr-3"></span> Se déconnecter
+              </button>
             </li>
           </ul>
           <div class="footer">
