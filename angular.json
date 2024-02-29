@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/mean-mitambatra-frontend",
+            "outputPath": "dist/Projet_M1_Mr_Rojo_Web_Front_End",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
