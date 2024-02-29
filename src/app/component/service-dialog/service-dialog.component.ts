@@ -33,13 +33,21 @@ export class ServiceDialogComponent {
   onFileInputChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement && inputElement.files && inputElement.files.length > 0) {
-      this.selectedFile = inputElement.files[0];
-      this._snackBar.open("File uploaded successfully!", 'Close', {
-        duration: 2000,
-      });
+      const file = inputElement.files[0];
+      if (file.type.match('image.*')) {
+        this.selectedFile = file;
+        this._snackBar.open("Fichier image téléchargé avec succès!", 'Close', {
+          duration: 2000,
+        });
+      } else {
+        this.selectedFile = null;
+        this._snackBar.open("Le fichier sélectionné n'est pas une image", 'Close', {
+          duration: 2000,
+        });
+      }
     } else {
       this.selectedFile = null;
-      this._snackBar.open("No file selected or input element is undefined", 'Close', {
+      this._snackBar.open("Aucun fichier sélectionné ou l'élément d'entrée est indéfini", 'Close', {
         duration: 2000,
       });
     }
@@ -47,17 +55,26 @@ export class ServiceDialogComponent {
   
   onFilesChange(files: File[]): void {
     if (files && files.length > 0) {
-      this.selectedFile = files[0];
-      this._snackBar.open("Files uploaded successfully!", 'Close', {
-        duration: 2000,
-      });
+      const file = files[0];
+      if (file.type.match('image.*')) {
+        this.selectedFile = file;
+        this._snackBar.open("Fichiers images téléchargés avec succès!", 'Close', {
+          duration: 2000,
+        });
+      } else {
+        this.selectedFile = null;
+        this._snackBar.open("Le fichier sélectionné n'est pas une image", 'Close', {
+          duration: 2000,
+        });
+      }
     } else {
       this.selectedFile = null;
-      this._snackBar.open("No files selected", 'Close', {
+      this._snackBar.open("Aucun fichier sélectionné", 'Close', {
         duration: 2000,
       });
     }
   }
+  
   
   modifierService(): void {
     if (this.selectedFile) {
