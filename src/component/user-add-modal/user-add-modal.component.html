@@ -1,0 +1,102 @@
+<!-- user-add-modal.component.html -->
+
+<!-- Loader -->
+<div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+  </div>
+  
+  <!-- Formulaire d'ajout d'utilisateur -->
+  <form (ngSubmit)="saveUser()">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nom"
+        [(ngModel)]="newUser.nom"
+        name="nom"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prénom</label>
+      <input
+        type="text"
+        class="form-control"
+        id="prenom"
+        [(ngModel)]="newUser.prenom"
+        name="prenom"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="mail" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="mail"
+        [(ngModel)]="newUser.mail"
+        name="mail"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="mdp" class="form-label">Mot de passe</label>
+      <input
+        type="password"
+        class="form-control"
+        id="mdp"
+        [(ngModel)]="newUser.mdp"
+        name="mdp"
+        required
+        minlength="8"
+      />
+    </div>
+    <div class="mb-3">
+        <label for="confirmMdp" class="form-label">Confirmer le mot de passe</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmMdp"
+          [(ngModel)]="newUser.confirmMdp"
+          name="confirmMdp"
+          required
+          minlength="8"
+        />
+    </div>
+    
+    <div class="mb-3">
+      <label for="role" class="form-label">Rôle</label>
+      <input
+        type="number"
+        class="form-control"
+        id="role"
+        [(ngModel)]="newUser.role"
+        name="role"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+  
+  <!-- Toast -->
+  <div
+    id="myToast"
+    class="toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <strong class="me-auto">Notification</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+        aria-label="Fermer"
+      ></button>
+    </div>
+    <div class="toast-body"></div>
+  </div>

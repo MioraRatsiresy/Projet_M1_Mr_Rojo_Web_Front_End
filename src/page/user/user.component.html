@@ -1,0 +1,65 @@
+<!-- user.component.html -->
+<div *ngIf="users.length > 0; else noUsers">
+    <h2>Liste des utilisateurs</h2>
+  
+    <!-- Formulaire de recherche avancée -->
+    <form>
+      <div>
+        <label>Nom:</label>
+        <input type="text" [(ngModel)]="nom" name="nom" (keyup)="searchUsers()" />
+      </div>
+      <div>
+        <label>Prénom:</label>
+        <input
+          type="text"
+          [(ngModel)]="prenom"
+          name="prenom"
+          (keyup)="searchUsers()"
+        />
+      </div>
+      <!-- Ajoutez d'autres champs de recherche au besoin -->
+    </form>
+  
+    <!-- Tableau des utilisateurs -->
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+          <th>Rôle</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.nom }}</td>
+          <td>{{ user.prenom }}</td>
+          <td>{{ user.mail }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <button (click)="showDetails(user)">Détails</button>
+            <button (click)="editUserModal(user)">Modifier</button>
+            <button (click)="deleteUser(user)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination -->
+    <div>
+      <button (click)="prevPage()" [disabled]="page === 0">
+        Page précédente
+      </button>
+      <span>Page {{ page + 1 }}</span>
+      <button (click)="nextPage()" [disabled]="users.length < limit">
+        Page suivante
+      </button>
+    </div>
+  
+    <button (click)="addUser()">Ajouter</button>
+  </div>
+  
+  <ng-template #noUsers>
+    <p>Aucun utilisateur trouvé.</p>
+  </ng-template>

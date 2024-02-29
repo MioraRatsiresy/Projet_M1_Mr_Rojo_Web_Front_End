@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Annuler le rendez-vous</h1>
+<div mat-dialog-content>
+  <p>Voulez-vous vraiment annuler ce rendez-vous ?</p>
+  <p>
+    Rendez-vous : {{ formatDate(data.rdv.dateheuredebut + "") }} -
+    {{ formatDate(data.rdv.dateheurefin + "") }}
+  </p>
+  <p>Prix : {{ formatPrice(data.rdv.prix) }}</p>
+  <p>Service : {{ data.rdv.service.nom }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Non</button>
+  <button mat-button color="warn" (click)="onCancelClick()">
+    Oui, annuler
+  </button>
+</div>

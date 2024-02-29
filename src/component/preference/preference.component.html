@@ -1,0 +1,62 @@
+<h3> choisir son services</h3>
+<select (change)="onSelectService($event)">
+	<option> Choose a service</option>
+	<option *ngFor="let item of services" [value]="item.id">
+		{{ item.nom }}, dure: {{ item.delai }} mn, prix: {{ item.prix }}
+	  </option>	
+</select>
+
+<button (click)="onAddPreferenceService()"> add to preference the services</button>
+<p></p>
+
+<h3> choisir son Employe prefere</h3>
+<select (change)="onSelectEmploye($event)">
+	<option> Choose a Emlpoye</option>
+	<option *ngFor="let item of employes" [value]="item.id">
+		Nom :{{ item.nom }}, Prenom: {{ item.prenom }} 
+	</option>	
+</select>
+
+<button (click)="onAddPreferenceEmploye()"> add to preference the employe</button>
+<p></p>
+
+
+<h3>Ses Employe prefere</h3>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Employe Name</th>
+            <th scope="col">Interact</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (listS of listPreferenceEmp; track listS.idEmploye; let i = $index) {
+			<tr>
+				<th scope="row">{{ i + 1 }}</th>	
+				<td>{{ getEmployeName(listS.idEmploye)}}</td>
+                <td><button (click)="onDeletePreferedEmp(listS.idEmploye)" > delete </button></td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<h3>Ses Services prefere</h3>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">service Name</th>
+            <th scope="col">Interact</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (listS of listePreferenceServices; track listS.idService; let i = $index) {
+			<tr>
+				<th scope="row">{{ i + 1 }}</th>	
+				<td>{{ getServiceName(listS.idService) }}</td>
+                <td><button  (click)="onDeletePreferedService(listS.idService)" > delete </button></td>
+			</tr>
+		}
+	</tbody>
+</table>
