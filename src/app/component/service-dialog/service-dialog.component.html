@@ -1,46 +1,66 @@
-<h1 mat-dialog-title>{{ data.isNew ? 'Ajouter un service' : 'Modifier le service' }}</h1>
-<div mat-dialog-content>
-    <mat-form-field appearance="fill">
-        <mat-label>Nom</mat-label>
-        <input matInput [(ngModel)]="data.service.nom">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Prix</mat-label>
-        <input matInput [(ngModel)]="data.service.prix">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Delai</mat-label>
-        <input matInput [(ngModel)]="data.service.delai">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Commission</mat-label>
-        <input matInput [(ngModel)]="data.service.commission">
-    </mat-form-field>
-    <div style="padding: 15px;">
-        <div>
-            <div class="dropzone" fileDragDrop (filesChangeEmiter)="onFilesChange($event)">
-              <div class="text-wrapper">
-                <div class="centered">
-                  <input type="file" name="image" id="file" (change)="onFileInputChange($event)">
-                  <label for="file"><span class="textLink">Select your file</span> or Drop it here!</label>
-                </div>
-              </div>
-            </div>
-          </div>          
-        <hr>
-        <h3 mat-subheader>Files</h3>
-        <div *ngIf="selectedFile" class="row fileItem">
-            <div class="col-sm-12 fileItemIconDiv" >
-                <i class="fa-6x fileItemIcon"></i>
-            </div>
-            <div class="col-sm-12 fileItemText">
-                <span>{{ selectedFile.name }}</span>
-            </div>
+<h1 class="dialog-title">
+  {{ data.isNew ? "Ajouter un service" : "Modifier le service" }}
+</h1>
+<div class="dialog-content">
+  <div class="form-field">
+    <label>Nom</label>
+    <input [(ngModel)]="data.service.nom" class="form-control" />
+  </div>
+  <div class="form-field">
+    <label>Prix</label>
+    <input [(ngModel)]="data.service.prix" class="form-control" />
+  </div>
+  <div class="form-field">
+    <label>Delai</label>
+    <input [(ngModel)]="data.service.delai" class="form-control" />
+  </div>
+  <div class="form-field">
+    <label>Commission</label>
+    <input [(ngModel)]="data.service.commission" class="form-control" />
+  </div>
+  <div class="file-upload-section">
+    <div
+      class="dropzone"
+      fileDragDrop
+      (filesChangeEmiter)="onFilesChange($event)"
+    >
+      <div class="text-wrapper">
+        <div class="centered">
+          <input
+            type="file"
+            name="image"
+            id="file"
+            (change)="onFileInputChange($event)"
+          />
+          <label for="file"
+            ><span class="textLink">Sélectionnez votre fichier</span> ou
+            déposez-le ici !</label
+          >
         </div>
+      </div>
     </div>
+    <hr />
+    <h3 class="subheader">Fichiers</h3>
+    <div *ngIf="selectedFile" class="row fileItem">
+      <div class="col-sm-12 fileItemIconDiv">
+        <i class="fa-6x fileItemIcon"></i>
+      </div>
+      <div class="col-sm-12 fileItemText">
+        <span>{{ selectedFile.name }}</span>
+      </div>
+    </div>
+  </div>
 </div>
-<div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Annuler</button>
-    <button mat-button *ngIf="data.isNew" (click)="ajouterService()">Ajouter</button>
-    <button mat-button *ngIf="!data.isNew" (click)="modifierService()">Modifier</button>
+<div class="dialog-actions">
+  <button (click)="onNoClick()" class="btn btn-secondary">Annuler</button>
+  <button *ngIf="data.isNew" (click)="ajouterService()" class="btn btn-primary">
+    Ajouter
+  </button>
+  <button
+    *ngIf="!data.isNew"
+    (click)="modifierService()"
+    class="btn btn-primary"
+  >
+    Modifier
+  </button>
 </div>

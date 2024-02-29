@@ -49,7 +49,7 @@ const routes: Routes = [
     },
     {
       path:'clients/preference',component: PreferenceComponent
-    }
+    },
 ];
 
 @NgModule({

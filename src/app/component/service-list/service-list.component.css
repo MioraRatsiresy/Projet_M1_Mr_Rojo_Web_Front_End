@@ -7,3 +7,8 @@
     margin-bottom: 20px;
   }
   
+  /* Style pour l'effet hover */
+.add-service-button:hover {
+  opacity: 0.8; /* Réduire l'opacité au survol */
+  transition: opacity 0.3s ease-in-out; /* Ajouter une transition fluide */
+}
