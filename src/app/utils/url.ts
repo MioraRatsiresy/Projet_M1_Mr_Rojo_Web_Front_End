@@ -1,1 +1,1 @@
-export const base_url = 'http://localhost:1672/api';
+export const base_url = 'https://mean-roussel-miora.onrender.com/api';
