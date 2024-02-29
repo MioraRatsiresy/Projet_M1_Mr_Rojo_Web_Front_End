@@ -9,7 +9,7 @@ import { RendezVous } from '../model/rdv.model';
   providedIn: 'root',
 })
 export class RdvService {
-  private apiUrl = 'http://localhost:1672'; // Assurez-vous que l'URL correspond à votre API
+  private apiUrl = 'https://projet-m1-mr-rojo-web-front-end.onrender.com'; // Assurez-vous que l'URL correspond à votre API
 
   constructor(private http: HttpClient) {}
 
