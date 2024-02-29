@@ -9,13 +9,18 @@ import { ProfileUpdateService } from '../../service/profile-update.service';
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  styleUrls: ['./profil.component.css'],
 })
 export class ProfilComponent implements OnInit {
   user: User | undefined;
   isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private dialog: MatDialog, private profileUpdateService: ProfileUpdateService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private dialog: MatDialog,
+    private profileUpdateService: ProfileUpdateService
+  ) {}
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -35,7 +40,7 @@ export class ProfilComponent implements OnInit {
       },
       (error) => {
         console.error('Erreur lors du chargement du profil : ', error);
-        this.isLoading = false ;
+        this.isLoading = false;
       }
     );
   }
@@ -43,10 +48,10 @@ export class ProfilComponent implements OnInit {
   openEditModal(): void {
     const dialogRef = this.dialog.open(UserEditModalComponent, {
       width: '400px',
-      data: this.user // Passez les données de l'utilisateur au modal de modification
+      data: this.user, // Passez les données de l'utilisateur au modal de modification
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Modal fermé');
     });
   }
