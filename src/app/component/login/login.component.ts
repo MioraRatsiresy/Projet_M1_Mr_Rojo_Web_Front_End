@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.submitted = true;
     if (this.loginForm.invalid) {
-      this.loading = false;
+      // this.loading = false;
       return;
     }
     this.authService.login(this.loginForm.value, this.role).subscribe({
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['/employe/rdv']);
         }
-        this.loading = false;
+        // this.loading = false;
       },
       error: (error) => {
         this.error = error.error.message;
