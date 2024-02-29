@@ -21,6 +21,7 @@ export class UserAddModalComponent {
     confirmMdp: '',
   };
   isLoading: boolean = false;
+  error: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<UserAddModalComponent>,
@@ -43,7 +44,8 @@ export class UserAddModalComponent {
         this.dialogRef.close();
       },
       (error) => {
-        console.error("Erreur lors de l'ajout de l'utilisateur : ", error);
+        this.error =
+          "Erreur lors de l'ajout de l'utilisateur , veuillez réajuster votre demande !";
         this.isLoading = false;
         this.toastr.error("Erreur lors de l'ajout de l'utilisateur"); // Utilisation de ToastrService pour afficher le toast d'erreur
       }

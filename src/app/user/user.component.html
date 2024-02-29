@@ -1,9 +1,9 @@
-<!-- user.component.html -->
 <h2>Liste des utilisateurs</h2>
-<form class="mb-6">
+
+<form class="mb-4">
   <div class="form-row row">
     <div class="form-group col-md-3">
-      <label for="nom">Nom:</label>
+      <label for="nom">Nom :</label>
       <input
         type="text"
         [(ngModel)]="nom"
@@ -14,7 +14,7 @@
       />
     </div>
     <div class="form-group col-md-3">
-      <label for="prenom">Prénom:</label>
+      <label for="prenom">Prénom :</label>
       <input
         type="text"
         [(ngModel)]="prenom"
@@ -29,7 +29,7 @@
 </form>
 
 <div *ngIf="users.length > 0; else noUsers" class="container">
-  <button class="btn btn-primary" (click)="addUser()">
+  <button class="btn btn-primary mb-3" (click)="addUser()">
     <span class="fa fa-plus-circle mr-1"></span> Ajouter
   </button>
 
@@ -52,25 +52,26 @@
           <td>{{ user.mail }}</td>
           <td>
             <span *ngIf="user.role === 10" class="fa fa-user mr-1">
-              Client</span
-            >
+              Client
+            </span>
             <span *ngIf="user.role === 20" class="fa fa-user mr-1">
-              Employé</span
-            >
-            <span *ngIf="user.role === 30" class="fa fa-user mr-1"
-              >Manager</span
-            >
+              Employé
+            </span>
+            <span *ngIf="user.role === 30" class="fa fa-user mr-1">
+              Manager
+            </span>
             <span
               *ngIf="user.role !== 10 && user.role !== 20 && user.role !== 30"
-              >Rien</span
             >
+              Rien
+            </span>
           </td>
 
           <td>
             <span class="mr-1">
               <button class="btn btn-primary" (click)="showDetails(user)">
                 <span class="fa fa-eye"></span>
-                Voir
+                Voir details
               </button>
             </span>
           </td>
@@ -104,7 +105,6 @@
     >
       Page précédente
     </button>
-    <span class="mr-1"></span>
     <button
       class="btn btn-secondary"
       (click)="nextPage()"

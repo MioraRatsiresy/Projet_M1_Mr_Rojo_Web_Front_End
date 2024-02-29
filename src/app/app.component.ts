@@ -13,10 +13,14 @@ import { AuthService } from './service/auth.service';
 export class AppComponent implements OnInit {
   isProfileActive = false;
   isRdvActive = false;
+  isList = false;
   isEmployeeActive = false;
   isAffiche = false;
   isClient = false;
   isEmploye = false;
+  isServiceActive = false;
+  isDepenseActive = false;
+  isStatActive = false;
 
   title = 'Mean_mitambatra_frontend';
   constructor(private router: Router, private authService: AuthService) {}
@@ -32,9 +36,13 @@ export class AppComponent implements OnInit {
         const currentUrl = event.url;
         this.isProfileActive = currentUrl.includes('/profil');
         this.isRdvActive = currentUrl.includes('/rdv');
+        this.isList = currentUrl.includes('/client/list');
         this.isEmployeeActive = currentUrl.includes('/user');
         this.isClient = currentUrl.includes('/client');
         this.isEmploye = currentUrl.includes('/employe');
+        this.isServiceActive = currentUrl.includes('admin/services');
+        this.isStatActive = currentUrl.includes('admin/statistiques');
+        this.isDepenseActive = currentUrl.includes('admin/depenses');
         this.isAffiche =
           currentUrl !== '/' &&
           !currentUrl.includes('/login') &&
@@ -68,5 +76,15 @@ export class AppComponent implements OnInit {
   logoutEmploye() {
     this.authService.logout();
     this.router.navigate(['/loginEmploye']);
+  }
+
+  logoutClient() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
+
+  logoutAdmin() {
+    this.authService.logout();
+    this.router.navigate(['/loginAdmin']);
   }
 }

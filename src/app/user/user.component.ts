@@ -125,6 +125,7 @@ export class UserComponent implements OnInit {
   addUser() {
     const dialogRef = this.dialog.open(UserAddModalComponent, {
       width: '400px',
+      height: '650px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -36,12 +36,12 @@ const routes: Routes = [
     component: AccueilManagerComponent,
   },
   {
-    path: 'services',
+    path: 'admin/services',
     component: ServiceListComponent,
   },
-  { path: 'statistiques', component: StatistiquesComponent },
+  { path: 'admin/statistiques', component: StatistiquesComponent },
   {
-    path: 'depenses',
+    path: 'admin/depenses',
     component: ExpenseCrudComponent,
   },
   {
@@ -57,7 +57,7 @@ const routes: Routes = [
     component: UserComponent,
   },
   {
-    path: 'clients/list',
+    path: 'client/list',
     component: ListComponent,
   },
   {
@@ -68,7 +68,9 @@ const routes: Routes = [
     path: 'employe/profil',
     component: ProfilComponent,
   },
-  { path: 'clients/profil', component: ProfilComponent },
+  { path: 'client/profil', component: ProfilComponent },
+  { path: 'admin/profil', component: ProfilComponent },
+  { path: 'admin/user', component: UserComponent },
   { path: 'logout', component: ProfilComponent },
 ];
 

@@ -23,28 +23,37 @@
     <div class="wrapper d-flex align-items-stretch">
       <nav id="sidebar" *ngIf="isAffiche">
         <div class="p-4">
-          <h3><a href="index.html" class="titre">Chic hair</a></h3>
+          <h3><a href="index.html" class="titre">Espace Admin</a></h3>
           <ul class="list-unstyled components mb-5">
             <li [class.active]="isProfileActive">
-              <a [routerLink]="['/profil']"
-                ><span class="fa fa-user mr-3"></span> Mon profil</a
+              <a [routerLink]="['admin/profil']"
+                ><span class="fa fa-user-circle-o mr-3"></span> Mon profil</a
               >
             </li>
-            <li [class.active]="isRdvActive">
-              <a [routerLink]="['/rdv']"
-                ><span class="fa fa-calendar fa-lg mr-3"></span>Rendez-vous</a
+            <li [class.active]="isServiceActive">
+              <a [routerLink]="['/admin/services']"
+                ><span class="fa fa-calendar mr-3"></span>Services</a
+              >
+            </li>
+            <li [class.active]="isStatActive">
+              <a [routerLink]="['/admin/statistiques']"
+                ><span class="fa fa-line-chart mr-3"></span>Statistiques</a
               >
             </li>
             <li [class.active]="isEmployeeActive">
-              <a [routerLink]="['/user']"
-                ><span class="fa fa-users fa-lg mr-3"></span>Gestion
-                utilisateur</a
+              <a [routerLink]="['admin/user']"
+                ><span class="fa fa-users mr-3"></span>Gestion utilisateur</a
+              >
+            </li>
+            <li [class.active]="isDepenseActive">
+              <a [routerLink]="['/admin/depenses']"
+                ><span class="fa fa-money mr-3"></span>Gestion dépenses</a
               >
             </li>
             <li>
-              <a [routerLink]="['/logout']"
-                ><span class="fa fa-sign-out mr-3"></span> Se déconnecter</a
-              >
+              <button class="logout-button" (click)="logoutAdmin()">
+                <span class="fa fa-sign-out mr-3"></span> Se déconnecter
+              </button>
             </li>
           </ul>
           <div class="footer">
@@ -69,15 +78,15 @@
                 ><span class="fa fa-user mr-3"></span> Mon profil</a
               >
             </li>
-            <li [class.active]="isRdvActive">
-              <a [routerLink]="['/client/rdv']"
+            <li [class.active]="isList">
+              <a [routerLink]="['/client/list']"
                 ><span class="fa fa-calendar fa-lg mr-3"></span>Rendez-vous</a
               >
             </li>
             <li>
-              <a [routerLink]="['/logout']"
-                ><span class="fa fa-sign-out mr-3"></span> Se déconnecter</a
-              >
+              <button class="logout-button" (click)="logoutClient()">
+                <span class="fa fa-sign-out mr-3"></span> Se déconnecter
+              </button>
             </li>
           </ul>
           <div class="footer">

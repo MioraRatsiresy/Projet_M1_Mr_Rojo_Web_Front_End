@@ -1,3 +1,12 @@
 .btn {
     margin: 1em;
 }
+
+.error {
+    color: rgb(196, 120, 120); /* Couleur du texte en rouge */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+    padding: 10px; /* Espacement intérieur */
+    margin-bottom: 10px; /* Marge en bas */
+  }
+  
