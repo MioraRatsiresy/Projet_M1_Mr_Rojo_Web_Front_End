@@ -6,11 +6,11 @@
       class="logo"
     />
   </div>
-  <h1>Login</h1>
+  <h1>Login {{ dynamicText }}</h1>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form-group">
       <img
-        src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png"
+        src="https://cdn-icons-png.flaticon.com/512/561/561127.png"
         alt="Email Icon"
         class="icon"
       />
@@ -28,7 +28,7 @@
     </div>
     <div class="form-group">
       <img
-        src="https://cdn-icons-png.flaticon.com/512/561/561127.png"
+        src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
         alt="Password Icon"
         class="icon"
       />
@@ -51,4 +51,15 @@
       <p><a routerLink="/register">Inscription</a></p>
     </div>
   </form>
+</div>
+<div class="register-link">
+  <div class="register-options">
+    <a href="loginEmploye" class="button-link"
+      ><button type="button">Employé</button></a
+    >
+    <a href="" class="button-link"><button type="button">Client</button></a>
+    <a href="loginAdmin" class="button-link"
+      ><button type="button">Administrateur</button></a
+    >
+  </div>
 </div>

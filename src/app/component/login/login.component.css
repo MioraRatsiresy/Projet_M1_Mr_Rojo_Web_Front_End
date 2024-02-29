@@ -93,3 +93,67 @@
     vertical-align: middle; /* Alignement vertical au milieu */
   }
   
+  .loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+ /* Bouton */
+.register-options {
+  display: flex;
+  justify-content: center; /* Pour centrer les boutons horizontalement */
+  align-items: center;
+  margin-top: 20px; /* Marge en haut */
+}
+
+.register-options button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 1em; /* Supprime l'espacement entre les boutons */
+}
+
+/* Couleurs des boutons */
+.register-options button:nth-child(1) {
+  background-color: #f55847; /* Vert */
+  color: white;
+}
+
+.register-options button:nth-child(2) {
+  background-color: #2196f3; /* Bleu */
+  color: white;
+}
+
+.register-options button:nth-child(3) {
+  background-color: #ff9800; /* Orange */
+  color: white;
+}
+
+/* Effet hover */
+.register-options button:hover {
+  background-color: #555; /* Couleur de survol sombre */
+}
+
+/* Lien autour du bouton */
+.button-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+  

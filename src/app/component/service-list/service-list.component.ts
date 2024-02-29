@@ -5,19 +5,17 @@ import { ServiceDialogComponent } from '../service-dialog/service-dialog.compone
 import { MatPaginator } from '@angular/material/paginator';
 import { base_url } from '../../utils/url';
 
-
-
 @Component({
   selector: 'app-service-list',
   templateUrl: './service-list.component.html',
-  styleUrls: ['./service-list.component.css']
+  styleUrls: ['./service-list.component.css'],
 })
-
 export class ServiceListComponent implements OnInit {
-  serveur=base_url+"/uploads/";
+  serveur = base_url + '/uploads/';
   pageSize = 2;
-  pageIndex = 0; 
+  pageIndex = 0;
   servicesOnCurrentPage: any[] = [];
+  isLoading: boolean = true;
 
   updateServicesOnCurrentPage() {
     const start = this.pageIndex * this.pageSize;
@@ -38,72 +36,88 @@ export class ServiceListComponent implements OnInit {
   services: any[] = [];
   service_detail: any;
   recherche = { nom: '', prix: '', delai: '', commission: '' };
-  displayedColumns: string[] = ['nom', 'prix', 'delai', 'commission','actions'];
-
+  displayedColumns: string[] = [
+    'nom',
+    'prix',
+    'delai',
+    'commission',
+    'actions',
+  ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private serviceService: ServiceService, public dialog: MatDialog) { }
+  constructor(
+    private serviceService: ServiceService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.listeservices();
   }
 
   listeservices() {
+    this.isLoading = true;
     this.serviceService.getAllServices().subscribe(
       (data: any[]) => {
         this.services = data;
         this.updateServicesOnCurrentPage();
+        this.isLoading = false;
       },
-      (error) => console.error(error)
+      (error) => {
+        console.error(error);
+        this.isLoading = false;
+      }
     );
   }
 
   rechercherServices() {
+    this.isLoading = true;
     const query: { [key: string]: any } = {};
-  
+
     if (this.recherche.nom) {
       query['nom'] = this.recherche.nom;
     }
-  
+
     if (this.recherche.prix) {
       query['prix'] = this.recherche.prix;
     }
-  
+
     if (this.recherche.delai) {
       query['delai'] = this.recherche.delai;
     }
-  
+
     if (this.recherche.commission) {
       query['commission'] = this.recherche.commission;
     }
-  
+
     this.serviceService.searchService(query).subscribe(
       (data: any[]) => {
         this.services = data;
         this.updateServicesOnCurrentPage();
+        this.isLoading = false;
       },
-      (error) => console.error(error)
+      (error) => {
+        console.error(error);
+        this.isLoading = false;
+      }
     );
   }
-  
-
 
   openModalService(service: any) {
     const dialogRef = this.dialog.open(ServiceDialogComponent, {
       width: '500px',
-      data: { service: service, isNew: false }
+      data: { service: service, isNew: false },
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.listeservices();
     });
   }
-  creerService(){
+  creerService() {
     const dialogRef = this.dialog.open(ServiceDialogComponent, {
       width: '500px',
-      data: { service: {}, isNew: true }
+      data: { service: {}, isNew: true },
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.listeservices();
     });
   }

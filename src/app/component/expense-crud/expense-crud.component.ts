@@ -8,19 +8,22 @@ import { DepenseService } from '../../service/depense/depense.service';
 @Component({
   selector: 'app-expense-crud',
   templateUrl: './expense-crud.component.html',
-  styleUrl: './expense-crud.component.css'
+  styleUrl: './expense-crud.component.css',
 })
 export class ExpenseCrudComponent {
   depenses: any[] = [];
   depense_detail: any;
-  recherche = { libelle: '', date: '', depense: ''};
+  recherche = { libelle: '', date: '', depense: '' };
   dataSource = new MatTableDataSource<any>([]);
-  displayedColumns: string[] = ['date', 'libelle', 'depense','actions'];
-
+  displayedColumns: string[] = ['date', 'libelle', 'depense', 'actions'];
+  isLoading: boolean = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private depenseService: DepenseService,public dialog: MatDialog) { }
+  constructor(
+    private depenseService: DepenseService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.listedepenses();
@@ -30,32 +33,37 @@ export class ExpenseCrudComponent {
   }
 
   listedepenses() {
+    this.isLoading = true;
     this.depenseService.getAllDepenses().subscribe(
       (data: any[]) => {
         this.depenses = data;
         this.dataSource.data = this.depenses;
+        this.isLoading = false;
       },
-      (error) => console.error(error)
+      (error) => {
+        console.error(error);
+        this.isLoading = false;
+      }
     );
   }
 
   rechercherDepenses() {
     const query: { [key: string]: any } = {};
-  
+
     if (this.recherche.libelle) {
       query['libelle'] = this.recherche.libelle;
     }
-  
+
     if (this.recherche.date) {
       query['date'] = this.recherche.date;
     }
-  
+
     if (this.recherche.depense) {
       query['depense'] = this.recherche.depense;
     }
-  
+
     this.depenseService.searchDepense(query).subscribe(
-      (data: any[]) => this.dataSource.data = data,
+      (data: any[]) => (this.dataSource.data = data),
       (error) => console.error(error)
     );
   }
@@ -63,15 +71,15 @@ export class ExpenseCrudComponent {
   openModalDepense(depense: any) {
     const dialogRef = this.dialog.open(ExpenseDialogComponent, {
       width: '500px',
-      data: { depense: depense, isNew: false }
+      data: { depense: depense, isNew: false },
     });
   }
-  creerDepense(){
+  creerDepense() {
     const dialogRef = this.dialog.open(ExpenseDialogComponent, {
       width: '500px',
-      data: { depense: {}, isNew: true }
+      data: { depense: {}, isNew: true },
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.listedepenses();
     });
   }
@@ -87,5 +95,4 @@ export class ExpenseCrudComponent {
       }
     );
   }
-
 }
