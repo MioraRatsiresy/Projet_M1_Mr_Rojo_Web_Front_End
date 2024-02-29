@@ -14,7 +14,7 @@ import { base_url } from '../../utils/url';
 })
 
 export class ServiceListComponent implements OnInit {
-  serveur=base_url+"/";
+  serveur=base_url+"/uploads/";
   pageSize = 2;
   pageIndex = 0; 
   servicesOnCurrentPage: any[] = [];
@@ -93,6 +93,9 @@ export class ServiceListComponent implements OnInit {
     const dialogRef = this.dialog.open(ServiceDialogComponent, {
       width: '500px',
       data: { service: service, isNew: false }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.listeservices();
     });
   }
   creerService(){
