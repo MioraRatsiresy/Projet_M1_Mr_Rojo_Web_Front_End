@@ -1,0 +1,49 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+    <p><input type="text" formControlName="nom"  placeholder="nom"/></p>
+    @if(submitted && f['nom'].errors){
+        @if(f['nom'].errors['required']){
+            <div>Votre nom est requis</div>
+        }
+    }
+    <p><input type="text" formControlName="prenom" placeholder="prenom"/></p>
+    @if(submitted && f['prenom'].errors){
+        @if(f['prenom'].errors['required']){
+            <div>Votre prenom est requis</div>
+        }
+    }
+    <p><input type="email" formControlName="mail" placeholder="email"/></p>
+    @if(submitted && f['mail'].errors){
+        @if(f['mail'].errors['email']){
+            <div>Format email invalide</div>
+        }
+        @if(f['mail'].errors['required']){
+            <div>Email est requis</div>
+        }
+    }
+    <p><input type="password" formControlName="mdp" placeholder="mot de passe"/></p>
+   @if(submitted && f['mdp'].errors){
+        @if(f['mdp'].errors['required']){
+            <div>Votre mot de passe est requis</div>
+        }
+        @if(f['mdp'].errors['minLength']){
+            <div>Votre mot de passe est trop courte</div>
+        }
+   }
+    <p><input type="password" formControlName="confirmMdp" placeholder="confirmer mot de passe"/></p>
+    @if(submitted && f['confirmMdp'].errors){
+        @if(f['confirmMdp'].errors){
+            @if(f['confirmMdp'].errors['required']){
+                <div>Veuillez confirmer votre mot de passe</div>
+            }
+        }
+    }
+    @if (submitted && f['confirmMdp'].errors) {
+        @if(f['confirmMdp'].errors['matching']){
+            <div>Mot de passe et confirmer mot de passe ne sont pas identique</div> 
+        }
+    }
+    <p><input type="submit" value="S'inscrire"></p>
+    @if(submitted && error){
+        <div>{{error}}</div>
+    }
+</form>

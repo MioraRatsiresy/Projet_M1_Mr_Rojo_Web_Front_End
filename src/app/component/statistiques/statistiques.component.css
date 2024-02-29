@@ -1,0 +1,56 @@
+.tab-container {
+    margin-top: 20px;
+}
+
+.tab-content {
+    padding: 20px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table th {
+    background-color: #f2f2f2;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20px; /* Ajustez la marge selon vos préférences */
+}
+
+.filter-container label {
+    margin-right: 10px; /* Ajustez la marge selon vos préférences */
+}
+
+.custom-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+#chart {
+    max-width: 650px;
+    margin: 35px auto;
+  }
+  

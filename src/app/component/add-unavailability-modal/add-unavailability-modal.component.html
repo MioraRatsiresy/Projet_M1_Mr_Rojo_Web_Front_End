@@ -1,0 +1,16 @@
+<h1>Ajouter une indisponibilité</h1>
+<div>
+  <p>Sélectionnez les dates et heures d'indisponibilité :</p>
+  <div>
+    <label>Date et heure de début</label>
+    <input type="datetime-local" [(ngModel)]="data.startDateTime" />
+  </div>
+  <div>
+    <label>Date et heure de fin</label>
+    <input type="datetime-local" [(ngModel)]="data.endDateTime" />
+  </div>
+</div>
+<div>
+  <button (click)="onCancelClick()">Annuler</button>
+  <button (click)="onSaveClick()">Enregistrer</button>
+</div>

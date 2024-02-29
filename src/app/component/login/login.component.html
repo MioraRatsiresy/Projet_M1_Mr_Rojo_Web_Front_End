@@ -1,0 +1,37 @@
+@if(role == 10){
+    <h1>Login</h1>
+}
+@else if(role == 20){
+    <h1>Login employe</h1>
+}
+@else{
+    <h1>Login Manager</h1>
+}
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <input type="email" formControlName="email"  [ngClass]="{ 'is-invalid':  submitted && f['email'].errors }" placeholder="Username"  required>
+    <br/>
+    @if(submitted && f['email'].errors){
+        @if (f['email'].errors['required']) {
+            <div>Email is required</div>
+            }
+        @if (f['email'].errors['email']) {
+        <div>Email is invalid</div>
+        }
+    }
+    <input type="password" formControlName="password"  [ngClass]="{ 'is-invalid':  f['password'].errors }" placeholder="Password" required>
+    @if (submitted &&  f['password'].errors) {
+          @if (f['password'].errors['required']) {
+          <div>Password is required</div>
+          }
+        }
+    <br/>    
+    <button type="submit">Login</button>
+    @if (submitted && error){
+        <div>
+            {{error}}
+        </div>
+    }
+    @if(role === 10){
+        <p><a routerLink="/register">Inscription</a></p>
+    }
+</form>
