@@ -7,7 +7,8 @@ import { User } from '../model/user.model'; // Assurez-vous d'importer le modèl
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:1672/api_user'; // Assurez-vous que l'URL correspond à votre API
+  private apiUrl =
+    'https://projet-m1-mr-rojo-web-back-end.onrender.com/api_user'; // Assurez-vous que l'URL correspond à votre API
 
   constructor(private http: HttpClient) {}
 

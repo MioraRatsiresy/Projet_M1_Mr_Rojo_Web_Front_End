@@ -1,1 +1,2 @@
-export const base_url = "http://localhost:1672/api";
+export const base_url =
+  'https://projet-m1-mr-rojo-web-back-end.onrender.com/api';

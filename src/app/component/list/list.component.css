@@ -49,3 +49,19 @@
     100% { transform: rotate(360deg); }
   }
   
+
+  .daty {
+    width: 100%; /* largeur à 100% */
+    padding: 10px; /* espace à l'intérieur de l'input */
+    font-size: 16px; /* taille de la police */
+    border: 1px solid #ccc; /* bordure de 1 pixel solide grise */
+    border-radius: 5px; /* bordure arrondie */
+    box-sizing: border-box; /* inclure la bordure et le padding dans la largeur */
+    outline: none; /* suppression de la bordure lorsqu'elle est mise en surbrillance */
+  }
+  
+  /* Style lorsque l'input est en focus */
+  .daty:focus {
+    border-color: #007bff; /* changement de la couleur de la bordure lorsqu'en focus */
+  }
+  
