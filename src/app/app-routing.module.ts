@@ -12,48 +12,63 @@ import { ListComponent } from './component/list/list.component';
 import { PreferenceComponent } from './component/preference/preference.component';
 import { ExpenseCrudComponent } from './component/expense-crud/expense-crud.component';
 import { StatistiquesComponent } from './component/statistiques/statistiques.component';
+import { ProfilComponent } from './employe/profil/profil.component';
 
 const routes: Routes = [
-    {
-      path: '', component: LoginClientComponent
-    },
-    {
-      path:'register', component: RegisterComponent
-    },
-    {
-      path:'loginAdmin', component: LoginManagerComponent
-    },
-    {
-      path:'login', component: LoginManagerComponent
-    },
-    {
-      path: 'accueilAdmin', component: AccueilManagerComponent
-    },
-    {
-      path: 'services', component: ServiceListComponent
-    },
-    { path: 'statistiques', component: StatistiquesComponent },
-    {
-      path: 'depenses', component: ExpenseCrudComponent
-    },
-    {
-      path: 'loginEmploye', component: LoginEmployeComponent
-    },{
-        path: 'employe/rdv', component: DiaryComponent
-    },
-    {
-      path: 'manager/user',component: UserComponent
-    },
-    {
-      path:'clients/list',component: ListComponent
-    },
-    {
-      path:'clients/preference',component: PreferenceComponent
-    },
+  {
+    path: '',
+    component: LoginClientComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'loginAdmin',
+    component: LoginManagerComponent,
+  },
+  {
+    path: 'login',
+    component: LoginManagerComponent,
+  },
+  {
+    path: 'accueilAdmin',
+    component: AccueilManagerComponent,
+  },
+  {
+    path: 'services',
+    component: ServiceListComponent,
+  },
+  { path: 'statistiques', component: StatistiquesComponent },
+  {
+    path: 'depenses',
+    component: ExpenseCrudComponent,
+  },
+  {
+    path: 'loginEmploye',
+    component: LoginEmployeComponent,
+  },
+  {
+    path: 'employe/rdv',
+    component: DiaryComponent,
+  },
+  {
+    path: 'manager/user',
+    component: UserComponent,
+  },
+  {
+    path: 'clients/list',
+    component: ListComponent,
+  },
+  {
+    path: 'clients/preference',
+    component: PreferenceComponent,
+  },
+  { path: 'clients/profil', component: ProfilComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

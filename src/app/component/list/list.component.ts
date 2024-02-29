@@ -34,6 +34,9 @@ export class ListComponent implements OnInit {
   offresSpec: any[] = [];
   listRdv: any[] = [];
   horaire: any[] = [];
+  errorMessage: string = '';
+  sucessMessageChoixEmploye: string = '';
+  isLoading: boolean = false;
 
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridDay',
@@ -84,6 +87,9 @@ export class ListComponent implements OnInit {
       },
       error: (error) => {
         console.error('An error occurred:', error.error.message);
+        this.errorMessage =
+          'Une erreur est survenue lors de la soumission du rendez-vous: ' +
+          error.error.error;
       },
     });
     flatpickr(
@@ -104,6 +110,9 @@ export class ListComponent implements OnInit {
       },
       error: (error) => {
         console.error(error);
+        this.errorMessage =
+          'Une erreur est survenue lors de la soumission du rendez-vous: ' +
+          error.error.error;
       },
     });
     this.listeService.getListHoraire().subscribe({
@@ -112,6 +121,9 @@ export class ListComponent implements OnInit {
       },
       error: (error) => {
         console.error(error);
+        this.errorMessage =
+          'Une erreur est survenue lors de la soumission du rendez-vous: ' +
+          error.error.error;
       },
     });
     //this.calendarOptions.events=[this.convertRdvToCalendarEvent(this.listRdv)];
@@ -136,6 +148,9 @@ export class ListComponent implements OnInit {
         console.error('An error occurred:', error.error.error);
         // You can show a user-friendly message here if needed
         //alert( error.error.error);
+        this.errorMessage =
+          'Une erreur est survenue lors de la soumission du rendez-vous: ' +
+          error.error.error;
       }
     );
   }
@@ -151,37 +166,44 @@ export class ListComponent implements OnInit {
 
   onDateChange(id: Event) {
     this.timeRdv = id;
-    alert();
   }
   onSubmitRdv() {
+    this.isLoading = true;
     const dateChoosed =
       this.elementRef.nativeElement.querySelector('#dtp').value;
-    if (this.idServiceChoosed == '' || dateChoosed == '')
-      alert('need to pick a service and date');
-    else {
+    if (this.idServiceChoosed == '' || dateChoosed == '') {
+      // alert('need to pick a service and date');
+      this.errorMessage = "Veuillez choisir une date d'abord !";
+      this.isLoading = false;
+    } else {
       this.http
         .post(base_url + '/clients/rdv/emp', { timechoosed: dateChoosed })
         .subscribe(
           (res: any) => {
             // Handle successful response
-            console.log(res);
-            console.log(dateChoosed);
+            this.sucessMessageChoixEmploye =
+              'Choisissez un employé maintenant !';
+            this.errorMessage = '';
             if (res) {
               //	console.log(res)
               this.employes = res.res;
             }
+            this.isLoading = false;
           },
           (error) => {
             // Handle error
             console.error('An error occurred:', error.error.error);
             // You can show a user-friendly message here if needed
-            alert(error.error.error);
+            // alert(error.error.error);
+            this.errorMessage = error.error.error;
+            this.isLoading = false;
           }
         );
     }
   }
 
   onAdd() {
+    this.isLoading = true;
     const dateParts = this.elementRef.nativeElement
       .querySelector('#dtp')
       .value.split('-');
@@ -227,20 +249,24 @@ export class ListComponent implements OnInit {
         (res: any) => {
           // Handle successful response
           if (res) {
-            alert('rdv in');
             //this.getListRdv()
             this.listRdv.push(res.res);
             this.calendarOptions.events = this.convertRdvToCalendarEvent(
               this.listRdv
             );
             //	console.log(this.listRdv)
+            this.isLoading = false;
+            this.sucessMessageChoixEmploye = 'Rendes-vous ajouté avec succès !';
+            this.ngOnInit();
           }
         },
         (error) => {
           // Handle error
           console.error('An error occurred:', error);
           // You can show a user-friendly message here if needed
-          alert(error.error.error);
+          // alert(error.error.error);
+          this.errorMessage = error.error.error;
+          this.isLoading = false;
         }
       );
   }

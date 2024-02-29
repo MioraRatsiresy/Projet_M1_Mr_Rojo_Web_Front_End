@@ -1,23 +1,22 @@
 <div class="container">
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
   <div class="row">
     <div class="col-md-6">
       <h3><span class="fa fa-wrench"></span> Choisir son service</h3>
       <select (change)="onSelectService($event)" class="form-control">
-        <option>Choisissez un service</option>
+        <option>-- Choisissez un service --</option>
         <option *ngFor="let item of services" [value]="item.id">
           {{ item.nom }}, durée : {{ item.delai }} mn, prix : {{ item.prix }}
         </option>
-        <option value="16sddf">Test</option>
       </select>
-      <div
-        *ngIf="submitted && !rdv.idService"
-        class="alert alert-danger mt-2"
-        role="alert"
-      >
-        Veuillez choisir un service.
-      </div>
     </div>
     <div class="col-md-6">
+      <div *ngIf="sucessMessageChoixEmploye" class="sucess-message">
+        {{ sucessMessageChoixEmploye }}
+      </div>
       <h3><span class="fa fa-user"></span> Choisir un employé</h3>
       <select (change)="onSelectEmp($event)" class="form-control">
         <option>Choisissez une personne</option>
@@ -25,13 +24,6 @@
           {{ emp.nom }} {{ emp.prenom }}
         </option>
       </select>
-      <div
-        *ngIf="submitted && !rdv.idEmploye"
-        class="alert alert-danger mt-2"
-        role="alert"
-      >
-        Veuillez choisir un employé.
-      </div>
     </div>
   </div>
   <div class="row">
@@ -43,13 +35,9 @@
         (ngModelChange)="onDateChange($event)"
         placeholder="Sélectionner une date"
       />
-      <div
-        *ngIf="submitted && !timeRdv"
-        class="alert alert-danger mt-2"
-        role="alert"
-      >
-        Veuillez sélectionner une date.
-      </div>
+      <button (click)="onSubmitRdv()" class="btn btn-primary">
+        <span class="fa fa-check"></span> Valider
+      </button>
     </div>
     <div class="col-md-6">
       <button (click)="onAdd()" class="btn btn-primary">
@@ -92,4 +80,8 @@
       ></full-calendar>
     </div>
   </div>
+</div>
+
+<div *ngIf="isLoading" class="loader-overlay">
+  <div class="loader"></div>
 </div>
