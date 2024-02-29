@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/Projet_M1_Mr_Rojo_Web_Front_End",
+            "outputPath": "dist/m1p11mean-mitasoa-miora",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
