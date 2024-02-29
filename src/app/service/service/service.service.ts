@@ -13,7 +13,7 @@ export class ServiceService {
     return this.http.get(`${base_url}/services/listeservices`);
   }
 
-  createService(formData:FormData): Observable<any> {
+  createService(formData:any): Observable<any> {
     return this.http.post(`${base_url}/services/creerservice`, formData);
 }
 

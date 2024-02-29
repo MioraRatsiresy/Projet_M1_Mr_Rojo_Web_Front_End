@@ -59,9 +59,9 @@ export class ServiceDialogComponent {
   modifierService() {
     if (this.selectedFile) {
       let reader = new FileReader();
-      reader.readAsArrayBuffer(this.selectedFile);
-      reader.onload = () => {
-        this.data.service.image = reader.result;
+      reader.onloadend = () => {
+        this.data.service.image = reader.result as string;
+        
         this.serviceService.updateService(this.data.service.id, this.data.service).subscribe(
           (response) => {
             console.log('Service mis à jour avec succès', response);
@@ -72,31 +72,39 @@ export class ServiceDialogComponent {
           }
         );
       };
+  
+      reader.readAsDataURL(this.selectedFile);
+    } else {
+      this._snackBar.open("No file selected", 'Close', {
+        duration: 2000,
+      });
     }
   }
 
   ajouterService() {
-    console.log(this.data.service)
-    const formData = new FormData();
     if (this.selectedFile) {
-      formData.append('image', this.selectedFile, this.selectedFile.name);
+      let reader = new FileReader();
+      reader.onloadend = () => {
+        this.data.service.image = reader.result as string;
+        
+        this.serviceService.createService(this.data.service).subscribe(
+          (response) => {
+            console.log('Service ajouté avec succès', response);
+            this.dialogRef.close();
+          },
+          (error) => {
+            console.error('Erreur lors de l"ajout du service', error);
+          }
+        );
+      };
+  
+      reader.readAsDataURL(this.selectedFile);
+    } else {
+      this._snackBar.open("No file selected", 'Close', {
+        duration: 2000,
+      });
     }
-    for (const key in this.data.service) {
-      if (this.data.service.hasOwnProperty(key)) {
-        console.log(key)
-        formData.append(key, this.data.service[key]);
-      }
-    }
-
-    this.serviceService.createService(formData).subscribe(
-      (response) => {
-        console.log('Service ajouté avec succès', response);
-        this.dialogRef.close();
-      },
-      (error) => {
-        console.error('Erreur lors de l"ajout du service', error);
-      }
-    );
   }
+  
 
 }
