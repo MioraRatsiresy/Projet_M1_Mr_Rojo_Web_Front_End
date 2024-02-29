@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { getToken, onMessage } from "firebase/messaging";
 import { messaging } from "../firebase/firebaseConfig";
 import { environment } from '../environments/environment';
-import { Toast } from 'bootstrap'; // Importez la classe Toast depuis Bootstrap
 import { Router, NavigationEnd } from '@angular/router'; // Importez NavigationEnd
 
 @Component({
@@ -14,6 +13,7 @@ export class AppComponent implements OnInit{
   isProfileActive = false;
   isRdvActive = false;
   isEmployeeActive = false;
+  isAffiche = true;
 
   title = 'Mean_mitambatra_frontend';
   constructor(private router: Router){};
@@ -22,9 +22,7 @@ export class AppComponent implements OnInit{
     this.listenForMessage();
     // Initialise le composant Toast
     var toastElList = [].slice.call(document.querySelectorAll('.toast'));
-    var toastList = toastElList.map(function (toastEl) {
-      return new Toast(toastEl);
-    });
+    
 
     // Écouter les changements d'URL et mettre à jour les variables en conséquence
     this.router.events.subscribe(event => {
@@ -33,6 +31,7 @@ export class AppComponent implements OnInit{
         this.isProfileActive = currentUrl.includes('/profil');
         this.isRdvActive = currentUrl.includes('/rdv');
         this.isEmployeeActive = currentUrl.includes('/user');
+        this.isAffiche = currentUrl !== '/' && !currentUrl.includes('/login') && !currentUrl.includes('/register');
       }
     });
   }

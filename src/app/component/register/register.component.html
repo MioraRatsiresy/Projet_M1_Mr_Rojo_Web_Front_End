@@ -1,49 +1,87 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()">
-    <p><input type="text" formControlName="nom"  placeholder="nom"/></p>
-    @if(submitted && f['nom'].errors){
-        @if(f['nom'].errors['required']){
-            <div>Votre nom est requis</div>
-        }
-    }
-    <p><input type="text" formControlName="prenom" placeholder="prenom"/></p>
-    @if(submitted && f['prenom'].errors){
-        @if(f['prenom'].errors['required']){
-            <div>Votre prenom est requis</div>
-        }
-    }
-    <p><input type="email" formControlName="mail" placeholder="email"/></p>
-    @if(submitted && f['mail'].errors){
-        @if(f['mail'].errors['email']){
-            <div>Format email invalide</div>
-        }
-        @if(f['mail'].errors['required']){
-            <div>Email est requis</div>
-        }
-    }
-    <p><input type="password" formControlName="mdp" placeholder="mot de passe"/></p>
-   @if(submitted && f['mdp'].errors){
-        @if(f['mdp'].errors['required']){
-            <div>Votre mot de passe est requis</div>
-        }
-        @if(f['mdp'].errors['minLength']){
-            <div>Votre mot de passe est trop courte</div>
-        }
-   }
-    <p><input type="password" formControlName="confirmMdp" placeholder="confirmer mot de passe"/></p>
-    @if(submitted && f['confirmMdp'].errors){
-        @if(f['confirmMdp'].errors){
-            @if(f['confirmMdp'].errors['required']){
-                <div>Veuillez confirmer votre mot de passe</div>
-            }
-        }
-    }
-    @if (submitted && f['confirmMdp'].errors) {
-        @if(f['confirmMdp'].errors['matching']){
-            <div>Mot de passe et confirmer mot de passe ne sont pas identique</div> 
-        }
-    }
-    <p><input type="submit" value="S'inscrire"></p>
-    @if(submitted && error){
-        <div>{{error}}</div>
-    }
-</form>
+<div class="card">
+  <div class="logo-container">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/2111/2111234.png"
+      alt="Logo"
+      class="logo"
+    />
+  </div>
+  <h1>Inscription</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="form-group">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/236/236832.png"
+        alt="User Icon"
+        class="icon"
+      />
+      <input type="text" formControlName="nom" placeholder="Nom" />
+    </div>
+    <div *ngIf="submitted && f['nom'].errors">
+      <div *ngIf="f['nom'].errors['required']">Votre nom est requis</div>
+    </div>
+    <div class="form-group">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/236/236832.png"
+        alt="User Icon"
+        class="icon"
+      />
+      <input type="text" formControlName="prenom" placeholder="Prénom" />
+    </div>
+    <div *ngIf="submitted && f['prenom'].errors">
+      <div *ngIf="f['prenom'].errors['required']">Votre prénom est requis</div>
+    </div>
+    <div class="form-group">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/561/561127.png"
+        alt="Email Icon"
+        class="icon"
+      />
+      <input type="email" formControlName="mail" placeholder="Email" />
+    </div>
+    <div *ngIf="submitted && f['mail'].errors">
+      <div *ngIf="f['mail'].errors['email']">Format email invalide</div>
+      <div *ngIf="f['mail'].errors['required']">Email est requis</div>
+    </div>
+    <div class="form-group">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
+        alt="Password Icon"
+        class="icon"
+      />
+      <input type="password" formControlName="mdp" placeholder="Mot de passe" />
+    </div>
+    <div *ngIf="submitted && f['mdp'].errors">
+      <div *ngIf="f['mdp'].errors['required']">
+        Votre mot de passe est requis
+      </div>
+      <div *ngIf="f['mdp'].errors['minlength']">
+        Votre mot de passe est trop court
+      </div>
+    </div>
+    <div class="form-group">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
+        alt="Password Icon"
+        class="icon"
+      />
+      <input
+        type="password"
+        formControlName="confirmMdp"
+        placeholder="Confirmer mot de passe"
+      />
+    </div>
+    <div *ngIf="submitted && f['confirmMdp'].errors">
+      <div *ngIf="f['confirmMdp'].errors['required']">
+        Veuillez confirmer votre mot de passe
+      </div>
+      <div *ngIf="f['confirmMdp'].errors['matching']">
+        Les mots de passe ne correspondent pas
+      </div>
+    </div>
+    <button type="submit">S'inscrire</button>
+    <div class="register-link">
+      <p><a routerLink="/">Se connecter</a></p>
+    </div>
+    <div *ngIf="submitted && error">{{ error }}</div>
+  </form>
+</div>
