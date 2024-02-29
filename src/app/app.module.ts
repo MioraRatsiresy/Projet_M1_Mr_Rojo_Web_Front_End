@@ -29,9 +29,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ServiceDialogComponent } from './component/service-dialog/service-dialog.component';
 import { ServiceListComponent } from './component/service-list/service-list.component';
 import { LoginEmployeComponent } from './page/login-employe/login-employe.component';
-import { DiaryComponent } from './component/diary/diary.component';
 import { CancelRdvModalComponent } from './component/cancel-rdv-modal/cancel-rdv-modal.component';
-import { AddUnavailabilityModalComponent } from './component/add-unavailability-modal/add-unavailability-modal.component';
 import { ToastrModule } from 'ngx-toastr';
 import {
   FullCalendarModule,
@@ -54,6 +52,7 @@ import { UserEditModalComponent } from './user/edit/user-edit-modal.component';
 import { UserDeleteModalComponent } from './user/delete/user-delete-modal.component';
 import { UserDetailsModalComponent } from './user/details/user-details-modal.component';
 import { UserComponent } from './user/user.component';
+import { AddUnavailabilityModalComponent } from './employe/indisponibilite/add-unavailability-modal.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +65,6 @@ import { UserComponent } from './user/user.component';
     ServiceDialogComponent,
     ServiceListComponent,
     LoginEmployeComponent,
-    DiaryComponent,
     CancelRdvModalComponent,
     AddUnavailabilityModalComponent,
     UserAddModalComponent,

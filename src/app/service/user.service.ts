@@ -4,16 +4,24 @@ import { Observable } from 'rxjs';
 import { User } from '../model/user.model'; // Assurez-vous d'importer le modèle User approprié
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  private apiUrl = 'http://localhost:1672/api_user'; // Assurez-vous que l'URL correspond à votre API
 
-  private apiUrl = 'http://localhost:8080/api_user'; // Assurez-vous que l'URL correspond à votre API
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Méthode pour récupérer tous les utilisateurs avec recherche avancée
-  getUsers(keyword: string, nom: string, prenom: string, mail: string, role: string, etat: string, page: string, limit: string): Observable<User[]> {
+  getUsers(
+    keyword: string,
+    nom: string,
+    prenom: string,
+    mail: string,
+    role: string,
+    etat: string,
+    page: string,
+    limit: string
+  ): Observable<User[]> {
     // Construire les paramètres de requête
     let params = new HttpParams();
     params = params.append('keyword', keyword);

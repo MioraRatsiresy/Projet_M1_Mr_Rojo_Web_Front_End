@@ -10,7 +10,7 @@ import { UserDeleteModalComponent } from './delete/user-delete-modal.component';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css'] // Utilisez `styleUrls` au lieu de `styleUrl`
+  styleUrls: ['./user.component.css'], // Utilisez `styleUrls` au lieu de `styleUrl`
 })
 export class UserComponent implements OnInit {
   users: User[] = [];
@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
   limit: number = 10;
   isLoading: boolean = true;
 
-  constructor(private dialog: MatDialog, private userService: UserService) { }
+  constructor(private dialog: MatDialog, private userService: UserService) {}
 
   ngOnInit(): void {
     this.loadUsers(); // Chargez les utilisateurs au démarrage du composant
@@ -32,16 +32,27 @@ export class UserComponent implements OnInit {
 
   loadUsers() {
     this.isLoading = true;
-    this.userService.getUsers(this.keyword, this.nom, this.prenom, this.mail, this.role, this.etat, this.page.toString(), this.limit.toString()).subscribe(
-      (data: User[]) => {
-        this.users = data; // Mettez à jour la liste des utilisateurs avec les données récupérées du service
-        this.isLoading = false;
-      },
-      (error) => {
-        console.log(error); // Gérez les erreurs de manière appropriée
-        this.isLoading = false;
-      }
-    );
+    this.userService
+      .getUsers(
+        this.keyword,
+        this.nom,
+        this.prenom,
+        this.mail,
+        this.role,
+        this.etat,
+        this.page.toString(),
+        this.limit.toString()
+      )
+      .subscribe(
+        (data: User[]) => {
+          this.users = data; // Mettez à jour la liste des utilisateurs avec les données récupérées du service
+          this.isLoading = false;
+        },
+        (error) => {
+          console.log(error); // Gérez les erreurs de manière appropriée
+          this.isLoading = false;
+        }
+      );
   }
 
   searchUsers() {
@@ -64,10 +75,10 @@ export class UserComponent implements OnInit {
   showDetails(user: User) {
     const dialogRef = this.dialog.open(UserDetailsModalComponent, {
       width: '400px',
-      data: user // Transférez les données de l'utilisateur au composant de modal
+      data: user, // Transférez les données de l'utilisateur au composant de modal
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Modal fermé');
     });
   }
@@ -75,23 +86,22 @@ export class UserComponent implements OnInit {
   editUserModal(user: User) {
     const dialogRef = this.dialog.open(UserEditModalComponent, {
       width: '400px',
-      data: user
+      data: user,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Modal fermé');
       this.loadUsers(); // Actualiser la liste des utilisateurs après la modification
     });
   }
 
-
   deleteUser(user: User) {
     const dialogRef = this.dialog.open(UserDeleteModalComponent, {
       width: '400px',
-      data: user
+      data: user,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Modal fermé');
       if (result === 'confirm') {
         // Appeler la méthode pour supprimer l'utilisateur
@@ -101,7 +111,10 @@ export class UserComponent implements OnInit {
             // Vous pouvez également actualiser la liste des utilisateurs ici si nécessaire
           },
           (error) => {
-            console.error('Erreur lors de la suppression de l\'utilisateur : ', error);
+            console.error(
+              "Erreur lors de la suppression de l'utilisateur : ",
+              error
+            );
             // Gérer les erreurs liées à la suppression de l'utilisateur
           }
         );
@@ -111,10 +124,10 @@ export class UserComponent implements OnInit {
 
   addUser() {
     const dialogRef = this.dialog.open(UserAddModalComponent, {
-      width: '400px'
+      width: '400px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Modal fermé');
       // Si vous souhaitez actualiser la liste des utilisateurs après l'ajout, appelez la méthode loadUsers()
       this.loadUsers();
@@ -125,12 +138,14 @@ export class UserComponent implements OnInit {
     this.userService.getUserById(userId).subscribe(
       (user: User) => {
         // Implémentez la logique pour afficher le profil de l'utilisateur
-        console.log('Profil de l\'utilisateur : ', user);
+        console.log("Profil de l'utilisateur : ", user);
       },
       (error) => {
-        console.error('Erreur lors de la récupération du profil de l\'utilisateur : ', error);
+        console.error(
+          "Erreur lors de la récupération du profil de l'utilisateur : ",
+          error
+        );
       }
     );
   }
-
 }

@@ -5,6 +5,7 @@ import { User } from '../../model/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { UserEditModalComponent } from '../../user/edit/user-edit-modal.component';
 import { ProfileUpdateService } from '../../service/profile-update.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-profil',
@@ -17,6 +18,7 @@ export class ProfilComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private auTh: AuthService,
     private userService: UserService,
     private dialog: MatDialog,
     private profileUpdateService: ProfileUpdateService
@@ -31,8 +33,7 @@ export class ProfilComponent implements OnInit {
 
   loadUserProfile() {
     this.isLoading = true;
-    // Chargez le profil de l'utilisateur en fonction de l'ID de l'utilisateur dans la route
-    const userId = '65dfffd120fe591977da8673';
+    const userId = this.auTh.getAuthToken() ?? ''; // Utilisation d'une chaîne vide comme valeur par défaut
     this.userService.getUserById(userId).subscribe(
       (data: User) => {
         this.user = data;
