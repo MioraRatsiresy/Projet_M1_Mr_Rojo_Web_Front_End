@@ -32,7 +32,7 @@ export class ProfilComponent implements OnInit {
   loadUserProfile() {
     this.isLoading = true;
     // Chargez le profil de l'utilisateur en fonction de l'ID de l'utilisateur dans la route
-    const userId = '65c683dd47ef1c3c0c5e6eb7';
+    const userId = '65dfffd120fe591977da8673';
     this.userService.getUserById(userId).subscribe(
       (data: User) => {
         this.user = data;

@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +21,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu'
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,13 +32,11 @@ import { LoginEmployeComponent } from './page/login-employe/login-employe.compon
 import { DiaryComponent } from './component/diary/diary.component';
 import { CancelRdvModalComponent } from './component/cancel-rdv-modal/cancel-rdv-modal.component';
 import { AddUnavailabilityModalComponent } from './component/add-unavailability-modal/add-unavailability-modal.component';
-import { UserAddModalComponent } from './component/user-add-modal/user-add-modal.component';
-import { UserEditModalComponent } from './component/user-edit-modal/user-edit-modal.component';
-import { UserDeleteModalComponent } from './component/user-delete-modal/user-delete-modal.component';
-import { UserDetailsModalComponent } from './component/user-details-modal/user-details-modal.component';
-import { UserComponent } from './page/user/user.component';
 import { ToastrModule } from 'ngx-toastr';
-import { FullCalendarModule,FullCalendarComponent } from '@fullcalendar/angular';
+import {
+  FullCalendarModule,
+  FullCalendarComponent,
+} from '@fullcalendar/angular';
 import { ListComponent } from './component/list/list.component';
 import { PreferenceComponent } from './component/preference/preference.component';
 import { FileDragNDropDirective } from './component/service-dialog/file-drag-n-drop.directive';
@@ -48,6 +46,14 @@ import { ExpenseCrudComponent } from './component/expense-crud/expense-crud.comp
 import { StatistiquesComponent } from './component/statistiques/statistiques.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ExpenseDialogComponent } from './component/expense-dialog/expense-dialog.component';
+import { ProfilComponent } from './employe/profil/profil.component';
+import { EmployeComponent } from './employe/employe.component';
+import { RdvCalendarComponent } from './employe/rdv/rdv-calendar.component';
+import { UserAddModalComponent } from './user/add/user-add-modal.component';
+import { UserEditModalComponent } from './user/edit/user-edit-modal.component';
+import { UserDeleteModalComponent } from './user/delete/user-delete-modal.component';
+import { UserDetailsModalComponent } from './user/details/user-details-modal.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +79,11 @@ import { ExpenseDialogComponent } from './component/expense-dialog/expense-dialo
     FileDragNDropDirective,
     ExpenseCrudComponent,
     StatistiquesComponent,
-    ExpenseDialogComponent
+    ExpenseDialogComponent,
+    ProfilComponent,
+    AppComponent,
+    EmployeComponent,
+    RdvCalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,22 +108,22 @@ import { ExpenseDialogComponent } from './component/expense-dialog/expense-dialo
     FullCalendarModule,
     NgApexchartsModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CorsInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

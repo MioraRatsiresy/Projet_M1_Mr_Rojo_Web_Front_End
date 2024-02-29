@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr'; // Import de ToastrService depuis ng
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add-modal.component.html',
-  styleUrls:['./user-add-modal.component.css'],
+  styleUrls: ['./user-add-modal.component.css'],
 })
 export class UserAddModalComponent {
   newUser: User = {
@@ -17,7 +17,8 @@ export class UserAddModalComponent {
     mdp: '',
     role: 0,
     etat: 0,
-    id: ''
+    id: '',
+    confirmMdp: '',
   };
   isLoading: boolean = false;
 
@@ -42,9 +43,9 @@ export class UserAddModalComponent {
         this.dialogRef.close();
       },
       (error) => {
-        console.error('Erreur lors de l\'ajout de l\'utilisateur : ', error);
+        console.error("Erreur lors de l'ajout de l'utilisateur : ", error);
         this.isLoading = false;
-        this.toastr.error('Erreur lors de l\'ajout de l\'utilisateur'); // Utilisation de ToastrService pour afficher le toast d'erreur
+        this.toastr.error("Erreur lors de l'ajout de l'utilisateur"); // Utilisation de ToastrService pour afficher le toast d'erreur
       }
     );
   }

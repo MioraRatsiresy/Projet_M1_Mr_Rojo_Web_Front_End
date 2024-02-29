@@ -7,12 +7,12 @@ import { AccueilManagerComponent } from './page/accueil-manager/accueil-manager.
 import { ServiceListComponent } from './component/service-list/service-list.component';
 import { LoginEmployeComponent } from './page/login-employe/login-employe.component';
 import { DiaryComponent } from './component/diary/diary.component';
-import { UserComponent } from './page/user/user.component';
 import { ListComponent } from './component/list/list.component';
 import { PreferenceComponent } from './component/preference/preference.component';
 import { ExpenseCrudComponent } from './component/expense-crud/expense-crud.component';
 import { StatistiquesComponent } from './component/statistiques/statistiques.component';
 import { ProfilComponent } from './employe/profil/profil.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
