@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
       console.log(token);
     } else if (permission === 'denied') {
       //notifications are blocked
-      alert('You denied for the notification');
+      // alert('You denied for the notification');
     }
   }
 
