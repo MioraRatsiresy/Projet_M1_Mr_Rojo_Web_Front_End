@@ -1,108 +1,126 @@
 .form-group {
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  .icon {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: auto;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    padding-left: 40px; /* Pour éviter que le texte se superpose à l'icône */
-    width: 100%;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    height: 40px;
-    background-color: #5ce1e6;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #48c9d6;
-  }
-  
-  .error-message {
-    color: #f55847;
-    margin-top: 10px;
-  }
-  
-  /* Pour afficher les messages d'erreur à côté des champs */
-  .invalid-feedback {
-    color: #f55847;
-    margin-top: 5px;
-  }
-  
+  position: relative;
+  margin-bottom: 20px;
+}
 
-  .card {
-    width: 550px; /* Ajustez la largeur de la carte selon vos besoins */
-    height: 700px; /* Ajustez la hauteur de la carte selon vos besoins */
-    margin: 0 auto; /* Pour centrer horizontalement */
-    display: flex; /* Utiliser flexbox pour centrer verticalement */
-    flex-direction: column; /* Disposer les éléments verticalement */
-    justify-content: center; /* Pour centrer verticalement */
-    align-items: center; /* Pour centrer horizontalement */
-    text-align: center;
-  }
-  
-  .logo-container {
-    margin-bottom: 20px; /* Espacement sous le logo */
-  }
-  
-  .logo {
-    width: 80px; /* Ajustez la taille du logo selon vos besoins */
-    height: auto; /* Permet de conserver les proportions originales */
-  }
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: auto;
+}
 
-  h1 {
-    font-size: 24px;
-    color: #5ce1e6;
-  }
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding-left: 40px; /* Pour éviter que le texte se superpose à l'icône */
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
 
-  .register-link {
-    margin-top: 20px;
-  }
-  
-  .register-link a {
-    color: #5ce1e6;
-    text-decoration: none;
-  }
-  
-  .register-link a:hover {
-    text-decoration: underline;
-  }
+button[type="submit"] {
+  width: 100%;
+  height: 40px;
+  background-color: #5ce1e6;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    
-  .loader {
-    border: 4px solid #f3f3f3; /* Light grey */
-    border-top: 4px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 2s linear infinite;
-    display: inline-block;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
+button[type="submit"]:hover {
+  background-color: #48c9d6;
+}
 
-  
+.error-message {
+  color: #f55847;
+  margin-top: 10px;
+}
+
+/* Pour afficher les messages d'erreur à côté des champs */
+.invalid-feedback {
+  color: #f55847;
+  margin-top: 5px;
+}
+
+.card {
+  width: 550px; /* Ajustez la largeur de la carte selon vos besoins */
+
+  margin: 0 auto; /* Pour centrer horizontalement */
+  display: flex; /* Utiliser flexbox pour centrer verticalement */
+  flex-direction: column; /* Disposer les éléments verticalement */
+  justify-content: center; /* Pour centrer verticalement */
+  align-items: center; /* Pour centrer horizontalement */
+  text-align: center;
+}
+
+.logo-container {
+  margin-bottom: 20px; /* Espacement sous le logo */
+  margin: 1em;
+}
+
+.logo {
+  width: 80px; /* Ajustez la taille du logo selon vos besoins */
+  height: auto; /* Permet de conserver les proportions originales */
+}
+
+h1 {
+  font-size: 24px;
+  color: #5ce1e6;
+}
+
+.register-link {
+  margin-top: 20px;
+}
+
+.register-link a {
+  color: #5ce1e6;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.success-message {
+  background-color: #dff0d8; /* Couleur de fond */
+  color: #3c763d; /* Couleur du texte */
+  border: 1px solid #d6e9c6; /* Bordure */
+  padding: 15px; /* Espace intérieur */
+  border-radius: 5px; /* Coins arrondis */
+  margin-top: 1em;
+}
+
+.invalid {
+  background-color: #f8d7da; /* Couleur de fond */
+  color: #721c24; /* Couleur du texte */
+  border: 1px solid #f5c6cb; /* Bordure */
+  padding: 10px; /* Espace intérieur */
+  border-radius: 5px; /* Coins arrondis */
+  margin-bottom: 5px;
+}

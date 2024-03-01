@@ -86,7 +86,13 @@
         Les mots de passe ne correspondent pas
       </div>
     </div>
-    <button type="submit">S'inscrire</button>
+    <button type="submit">
+      <span *ngIf="!loading">S'inscrire</span>
+      <span *ngIf="loading" class="loader"></span>
+    </button>
+    <div class="success-message" *ngIf="showSuccessMessage">
+      Inscription effectuée avec succès
+    </div>
     <div class="register-link">
       <p><a routerLink="/">Se connecter</a></p>
     </div>

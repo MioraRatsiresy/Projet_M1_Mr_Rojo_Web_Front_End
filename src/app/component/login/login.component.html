@@ -6,12 +6,12 @@
       class="logo"
     />
   </div>
-  <h1>Login {{ dynamicText }}</h1>
+  <h1>Connexion {{ dynamicText }}</h1>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form-group">
       <img
         src="https://cdn-icons-png.flaticon.com/512/561/561127.png"
-        alt="Email Icon"
+        alt="Icône Email"
         class="icon"
       />
       <input
@@ -19,19 +19,22 @@
         [value]="email"
         formControlName="email"
         [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
-        placeholder="Username"
+        placeholder="Adresse e-mail"
         required
       />
-
-      <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
-        <div *ngIf="f['email'].errors['required']">Email is required</div>
-        <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+      <div class="invalid" *ngIf="submitted && f['email'].errors">
+        <div *ngIf="f['email'].errors['required']">
+          L'adresse e-mail est obligatoire
+        </div>
+        <div *ngIf="f['email'].errors['email']">
+          L'adresse e-mail est invalide
+        </div>
       </div>
     </div>
     <div class="form-group">
       <img
         src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
-        alt="Password Icon"
+        alt="Icône Mot de passe"
         class="icon"
       />
       <input
@@ -39,15 +42,20 @@
         [value]="password"
         formControlName="password"
         [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
-        placeholder="Password"
+        placeholder="Mot de passe"
         required
       />
-      <div class="invalid-feedback" *ngIf="submitted && f['password'].errors">
-        <div *ngIf="f['password'].errors['required']">Password is required</div>
+      <div class="invalid" *ngIf="submitted && f['password'].errors">
+        <div *ngIf="f['password'].errors['required']">
+          Le mot de passe est obligatoire
+        </div>
       </div>
     </div>
     <div class="form-group">
-      <button type="submit">Login</button>
+      <button type="submit">
+        <span *ngIf="!loading">Connexion</span>
+        <span *ngIf="loading" class="loader"></span>
+      </button>
       <div class="error-message" *ngIf="submitted && error">{{ error }}</div>
     </div>
     <div class="register-link">
