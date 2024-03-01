@@ -7,42 +7,45 @@ import { base_url } from '../utils/url';
 import { DeviceRegistryService } from './device/device-registry.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class PushnotificationService {
   token = localStorage.getItem('token');
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-     'Authorization':this.token || '' // Permettre l'accès depuis n'importe quelle origine
+    Authorization: this.token || '', // Permettre l'accès depuis n'importe quelle origine
   });
-  constructor(private http: HttpClient, private deviceFirebase: DeviceRegistryService) { }
+  constructor(
+    private http: HttpClient,
+    private deviceFirebase: DeviceRegistryService
+  ) {}
 
   async requestPermission() {
     const permission = await Notification.requestPermission();
-    if(permission === "granted"){
-      const token_registration = await getToken(messaging,{
-        vapidKey: environment.firebaseConfig.vapidKey
+    if (permission === 'granted') {
+      const token_registration = await getToken(messaging, {
+        vapidKey: environment.firebaseConfig.vapidKey,
       });
       console.log(token_registration);
-      this.deviceFirebase.device_register({token_registration:token_registration}).subscribe({
-        next:(res)=>{
-          console.log('Enregistrement de appareil effectué avec succès');
-        },
-        error:(error) =>{
+      this.deviceFirebase
+        .device_register({ token_registration: token_registration })
+        .subscribe({
+          next: (res) => {
+            console.log('Enregistrement de appareil effectué avec succès');
+          },
+          error: (error) => {
             console.error(error.error.message);
-        }
-      })
-    }else if (permission === "denied") {
-      alert("You denied for the notification");
+          },
+        });
+    } else if (permission === 'denied') {
+      // alert("You denied for the notification");
     }
   }
 
-  async listenForMessage(){
+  async listenForMessage() {
     onMessage(messaging, (payload) => {
       console.log('Message received. ', payload);
     });
   }
 }
-
