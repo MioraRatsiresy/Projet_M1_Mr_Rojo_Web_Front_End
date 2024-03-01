@@ -139,7 +139,7 @@ button[type="submit"]:hover {
 
 /* Couleurs des boutons */
 .register-options button:nth-child(1) {
-  background-color: #f55847; /* Vert */
+  background-color: #3498db; /* Vert */
   color: white;
 }
 
