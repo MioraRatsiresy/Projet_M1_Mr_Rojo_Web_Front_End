@@ -50,7 +50,7 @@
     />
   </div>
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label>Rôle :</label><br />
     <label class="radio-inline">
       <input
@@ -84,8 +84,8 @@
         [checked]="editedUser.role === 30"
       />
       Manager
-    </label>
-    <!-- <label class="radio-inline">
+    </label> -->
+  <!-- <label class="radio-inline">
       <input
         type="radio"
         [(ngModel)]="editedUser.role"
@@ -101,7 +101,8 @@
       />
       Rien
     </label> -->
-  </div>
+  <!-- </div> -->
 
-  <button type="submit" class="btn btn-primary mt-3 mb-4">Modifier</button>
+  <button type="submit" class="btn btn-primary mt-3 mb-4 mr-1">Modifier</button>
+  <button (click)="onClose()" class="btn btn-danger mt-3 mb-4">Fermé</button>
 </form>
