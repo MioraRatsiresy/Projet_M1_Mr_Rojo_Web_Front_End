@@ -18,6 +18,7 @@ const routes: Routes = [
   {
     path: '',
     component: LoginClientComponent,
+    data: { email: 'miora@gmail.com', password: '123456789' },
   },
   {
     path: 'register',
@@ -26,10 +27,12 @@ const routes: Routes = [
   {
     path: 'loginAdmin',
     component: LoginManagerComponent,
+    data: { email: 'mendrika@gmail.com', password: '123456789' },
   },
   {
     path: 'login',
     component: LoginManagerComponent,
+    data: { email: 'miora@gmail.com', password: '123456789' },
   },
   {
     path: 'accueilAdmin',
@@ -47,6 +50,7 @@ const routes: Routes = [
   {
     path: 'loginEmploye',
     component: LoginEmployeComponent,
+    data: { email: 'eva@yahoo.com', password: '123456789' },
   },
   {
     path: 'employe/rdv',

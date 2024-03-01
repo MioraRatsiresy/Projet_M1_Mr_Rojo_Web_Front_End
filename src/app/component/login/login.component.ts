@@ -1,38 +1,39 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PushnotificationService } from '../../service/pushnotification.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   loading: boolean = false;
   dynamicText: string = '';
-
-  @Input() role = 0;
   error: string | undefined;
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
+  loginForm: FormGroup;
+
+  email: string | undefined;
+  password: string | undefined; // Déclarez la propriété password ici
 
   submitted: boolean = false;
+
+  @Input() role: number = 0;
+
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private push: PushnotificationService
-  ) {}
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
+  }
 
   ngOnInit(): void {
     // Obtenez l'URL actuelle
@@ -47,15 +48,19 @@ export class LoginComponent implements OnInit {
       this.dynamicText = ' - Client'; // Autre URL, aucun texte dynamique
     }
 
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+    // Récupérer les valeurs par défaut de l'email et du mot de passe à partir des données de la route
+    this.route.data.subscribe((data) => {
+      this.loginForm.patchValue({
+        email: data['email'],
+        password: data['password'],
+      });
     });
   }
 
-  get f(): { [key: string]: AbstractControl } {
+  get f() {
     return this.loginForm.controls;
   }
+
   login() {
     this.loading = true;
     this.submitted = true;
