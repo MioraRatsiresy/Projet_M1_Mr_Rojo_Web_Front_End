@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   role: string = '';
   etat: string = '';
   page: number = 0;
-  limit: number = 10;
+  limit: number = 5;
   isLoading: boolean = true;
 
   constructor(private dialog: MatDialog, private userService: UserService) {}

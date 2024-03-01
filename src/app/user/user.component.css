@@ -36,3 +36,24 @@
   * {
     font-family: "Poppins", Arial, sans-serif;
   }
+
+  /* Style de base pour l'élément input */
+.input-style {
+  width: 100%; /* Largeur de l'input */
+  padding: 8px; /* Espacement interne */
+  font-size: 16px; /* Taille de la police */
+  border: 1px solid #ccc; /* Bordure avec couleur de base */
+  border-radius: 4px; /* Coins arrondis */
+}
+
+/* Style lorsque l'input a le focus */
+.input-style:focus {
+  outline: none; /* Supprimer l'outline par défaut */
+  border-color: #007bff; /* Couleur de la bordure lorsqu'il est en focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Ombre de mise au point */
+}
+
+/* Style pour les placeholders */
+.input-style::placeholder {
+  color: #999; /* Couleur du placeholder */
+}
